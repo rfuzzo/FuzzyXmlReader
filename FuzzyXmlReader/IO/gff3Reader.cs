@@ -71,6 +71,8 @@ namespace FuzzyXmlReader.IO
         /// <param name="parentStruct"></param>
         private static void ParseStruct(XElement in_xstruct, gff3struct parentStruct)
         {
+            string structID = in_xstruct.Attribute("id").Value;
+
             foreach (var node in in_xstruct.Elements())
             {
                 // if node is a list

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -72,19 +73,79 @@ namespace FuzzyXmlReader.IO
 
             }
 
-            List<XElement> sections = Doc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
-            List<XNode> list = sections.Distinct(new XNodeEqualityComparer()).ToList(); //make distinct
-            //add to document
+            //Generate YML
+            XDocument sections = GenerateYML(Doc, path);
+           
+            Doc.Save(path);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
+        private static XDocument GenerateYML(XDocument doc, string path)
+        {
             var d = new XDocument();
             d.AddFirst(new XElement("root"));
+
+            List<XElement> sections = doc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
+            List<XElement> list = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
+            List<string> sectionIDs = list.Select(x => x.Attribute("sectionRef").Value).ToList();
+
+            var sectionDict = new Dictionary<string, string>();
             foreach (var item in list)
             {
-                d.Root.Add(item);
+                sectionDict.Add(item.Attribute("idx").Value, item.Attribute("section").Value);
             }
-            d.Save(path);
 
-            //Doc.Save(path);
+            
+            
+            foreach (var item in list)
+            {
+                //tag sectionRefs througout the file (needed because the initial recursion cannot catch references to later sections)
+
+
+                // delete 
+                var sdesc = item.Descendants().Where(x => sectionIDs.Contains(x.Attribute("idx")?.Value)).ToList();
+                foreach (var n in sdesc)
+                {
+                    var refID = n.Attribute("idx").Value;
+                    var refName = sectionDict[refID];
+
+                    if (n.Parent.Attribute("CHOICE") != null)
+                    {
+                        if (n.Parent.Element("CHOICE") != null)
+                        {
+                            n.Parent.Element("CHOICE")?.Add(new XElement("REF", new XAttribute("NEXT", refName)));
+                        }
+                        else
+                            n.Parent.Add(new XElement("CHOICE", new XElement("REF", new XAttribute("NEXT", refName))));
+                    }
+                    else
+                    {
+                        n.Parent.Add(new XElement("REF", new XAttribute("NEXT", refName)));
+                    }
+                    n.Remove();
+                }
+                   
+
+                
+
+                d.Root.Add(new XElement("section", item));
+            }
+
+
+            //save
+            var fn = Path.GetFileNameWithoutExtension(path);
+            var dn = Path.GetPathRoot(path);
+            d.Save(Path.Combine(dn,$"{fn}_sections.xml"));
+            
+
+            return d;
         }
+
+
 
         /// <summary>
         /// Recursive writing dialogue tree.
@@ -107,6 +168,11 @@ namespace FuzzyXmlReader.IO
                 // and we must label all replys as goto points
                 CGff3ListObject<gff3struct> replies = entry.GetListObjectByName<gff3struct>("RepliesList");
 
+                if (replies.Value.Count > 1)
+                {
+                    output.Add(new XAttribute("CHOICE", "true"));
+                }
+                    
                 foreach (gff3struct reply in replies.Value)
                 {
                     int newidx = int.Parse(reply.GetCommonObjectByName("Index").Value.ToString());
@@ -177,14 +243,23 @@ namespace FuzzyXmlReader.IO
             XElement output = new XElement(type);
             
             output.Add(
-                //new XAttribute("idx", idx),
+                new XAttribute("idx", $"{type}_{idx}"),
                 //new XAttribute("NodeType", NodeType),
                 new XAttribute("Speaker", Speaker),
                 //new XAttribute("Interlocutor", Interlocutor),
                 new XAttribute("Text", Text)
                 );
             if (isSection)
-                output.Add(new XAttribute("section", $"section_{Text.Split(' ').First()}"));
+            {
+                string sectionname = Text.Split(' ').First();
+                //remove all 
+                Regex rgx = new Regex("[^a-zA-Z0-9]");
+                sectionname = rgx.Replace(sectionname, "");
+
+                output.Add(new XAttribute("section", $"section_{sectionname}"));
+                output.Add(new XAttribute("sectionRef", $"{type}_{idx}"));
+            }
+                
 
 
             parent.Add(output);

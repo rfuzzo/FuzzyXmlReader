@@ -36,6 +36,7 @@ namespace FuzzyXmlReader.gff3Types
 
         //HACK
         public bool IsSection { get; set; }
+        public int sectionRef { get; set; }
 
 
 
