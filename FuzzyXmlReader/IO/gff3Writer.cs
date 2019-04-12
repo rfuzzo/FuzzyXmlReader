@@ -46,22 +46,40 @@ namespace FuzzyXmlReader.IO
         }
 
 
-
+        #region XML
         /// <summary>
-        /// Outputs custom text.
+        /// 
         /// </summary>
-        /// <param name="path"></param>
         /// <param name="gff3"></param>
-        public static void WriteCustomOutput_1(string path, gff3struct gff3)
+        /// <returns></returns>
+        public static XDocument GenerateXML(gff3struct gff3)
         {
             gff3struct Gff3 = gff3;
+
+            #region XML Structure
+            var Doc = new XDocument();
+            var root = new XElement("root");
+            Doc.AddFirst(root);
+            Doc.Root.Add(
+                new XElement("Settings"),
+                new XElement("Dialogscripts"));
+            XElement Settings = Doc.Descendants("Settings").First();
+            XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
+            #endregion
+
+
+            // get settings
+            List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("SpeakerList"))?.Value;
+            List<string> Actors = SpeakerList.Select(x => x.GetCommonObjectByName("Speaker")?.Value.ToString() )?.ToList();
+            Settings.Add(new XElement("Actors"));
+            foreach (var actor in Actors)
+            {
+                Settings.Element("Actors").Add(new XElement("Actor", actor));
+            }
             
 
-            var Doc = new XDocument( );
-            var root = new XElement("gff3CustomOutput");
-            Doc.AddFirst(root);
 
-            // starting point
+            // starting dialogscripts
             CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("StartingList");
             foreach (gff3struct item in StartingList.Value)
             {
@@ -69,83 +87,12 @@ namespace FuzzyXmlReader.IO
                 int idx = int.Parse(obj.Value.ToString());
 
                 // Write Tree
-                WriteTree(gff3, Doc.Root, idx, "entry", true);
+                WriteTree(gff3, Dialogscripts, idx, "entry", true);
 
             }
 
-            //Generate YML
-            XDocument sections = GenerateYML(Doc, path);
-           
-            Doc.Save(path);
+            return Doc;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="doc"></param>
-        /// <returns></returns>
-        private static XDocument GenerateYML(XDocument doc, string path)
-        {
-            var d = new XDocument();
-            d.AddFirst(new XElement("root"));
-
-            List<XElement> sections = doc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
-            List<XElement> list = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
-            List<string> sectionIDs = list.Select(x => x.Attribute("sectionRef").Value).ToList();
-
-            var sectionDict = new Dictionary<string, string>();
-            foreach (var item in list)
-            {
-                sectionDict.Add(item.Attribute("idx").Value, item.Attribute("section").Value);
-            }
-
-            
-            
-            foreach (var item in list)
-            {
-                //tag sectionRefs througout the file (needed because the initial recursion cannot catch references to later sections)
-
-
-                // delete 
-                var sdesc = item.Descendants().Where(x => sectionIDs.Contains(x.Attribute("idx")?.Value)).ToList();
-                foreach (var n in sdesc)
-                {
-                    var refID = n.Attribute("idx").Value;
-                    var refName = sectionDict[refID];
-
-                    if (n.Parent.Attribute("CHOICE") != null)
-                    {
-                        if (n.Parent.Element("CHOICE") != null)
-                        {
-                            n.Parent.Element("CHOICE")?.Add(new XElement("REF", new XAttribute("NEXT", refName)));
-                        }
-                        else
-                            n.Parent.Add(new XElement("CHOICE", new XElement("REF", new XAttribute("NEXT", refName))));
-                    }
-                    else
-                    {
-                        n.Parent.Add(new XElement("REF", new XAttribute("NEXT", refName)));
-                    }
-                    n.Remove();
-                }
-                   
-
-                
-
-                d.Root.Add(new XElement("section", item));
-            }
-
-
-            //save
-            var fn = Path.GetFileNameWithoutExtension(path);
-            var dn = Path.GetPathRoot(path);
-            d.Save(Path.Combine(dn,$"{fn}_sections.xml"));
-            
-
-            return d;
-        }
-
-
 
         /// <summary>
         /// Recursive writing dialogue tree.
@@ -168,7 +115,12 @@ namespace FuzzyXmlReader.IO
                 // and we must label all replys as goto points
                 CGff3ListObject<gff3struct> replies = entry.GetListObjectByName<gff3struct>("RepliesList");
 
-                if (replies.Value.Count > 1)
+
+                if (replies.Value.Count == 0)
+                {
+                    output.Add(new XAttribute("END", "true"));
+                }
+                else if(replies.Value.Count > 1)
                 {
                     output.Add(new XAttribute("CHOICE", "true"));
                 }
@@ -180,9 +132,6 @@ namespace FuzzyXmlReader.IO
                     //if there is a choice, flag the two replies
                     WriteTree(gff3, output, newidx, "reply", replies.Value.Count > 1);
                 }
-
-
-
             }
             else if (lookIn == "reply")
             {
@@ -196,10 +145,10 @@ namespace FuzzyXmlReader.IO
                 // because nps can't choose
                 CGff3ListObject<gff3struct> entries = reply.GetListObjectByName<gff3struct>("EntriesList");
                 
-                // DEBUG
                 if (entries.Value.Count == 0)
                 {
-
+                    //is end? //FIXME
+                    output.Add(new XAttribute("END", "true"));
                 }
                 else if (entries.Value.Count == 1)
                 {
@@ -266,5 +215,101 @@ namespace FuzzyXmlReader.IO
 
             return output;
         }
+
+        #endregion
+
+        #region SectionsXML
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_indoc"></param>
+        /// <returns></returns>
+        public static XDocument GenerateSectionsXML(XDocument _indoc)
+        {
+            #region XML Structure
+            var Doc = new XDocument();
+            var root = new XElement("root");
+            Doc.AddFirst(root);
+            Doc.Root.Add(_indoc.Descendants("Settings").First(),
+                new XElement("Dialogscripts"));
+            XElement Settings = Doc.Descendants("Settings").First();
+            XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
+            #endregion
+
+
+
+            List<XElement> sections = _indoc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
+            List<XElement> list = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
+            List<string> sectionIDs = list.Select(x => x.Attribute("sectionRef").Value).ToList();
+
+            //sections id, name dictionary
+            var sectionDict = new Dictionary<string, string>();
+            foreach (var item in list)
+            {
+                sectionDict.Add(item.Attribute("idx").Value, item.Attribute("section").Value);
+            }
+
+
+            // loop through all section nodes
+            foreach (var item in list)
+            {
+                string sectionName = item.Attribute("section").Value;
+
+                //delete sectionRefs througout the file (needed because the initial recursion cannot catch references to later sections)
+                var sdesc = item.Descendants().Where(x => sectionIDs.Contains(x.Attribute("idx")?.Value)).ToList();
+                foreach (var n in sdesc)
+                {
+                    var refID = n.Attribute("idx").Value;
+                    var refName = sectionDict[refID];
+                    string Text = n.Attribute("Text")?.Value;
+
+                    //if was choice
+                    if (n.Parent.Attribute("CHOICE") != null)
+                    {
+                        if (n.Parent.Element("CHOICE") != null)
+                        {
+                            n.Parent.Element("CHOICE")?.Add(new XElement("CREF",
+                                new XAttribute("NEXT", refName),
+                                new XAttribute("Text", Text)
+                                ));
+                        }
+                        else
+                            n.Parent.Add(new XElement("CHOICE",
+                                new XElement("CREF",
+                                new XAttribute("NEXT", refName),
+                                new XAttribute("Text", Text)
+                                )));
+                    }
+                    else
+                    {
+                        n.Parent.Add(new XElement("REF",
+                            new XAttribute("NEXT", refName),
+                            new XAttribute("Text", Text)
+                            ));
+                    }
+                    n.Remove();
+                }
+
+                //add end sections
+                if (sdesc.Count == 0)
+                {
+                    var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
+                    last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                }
+
+
+
+                Dialogscripts.Add(new XElement("section", new XAttribute("Name", sectionName), item));
+            }
+
+            //add exit section
+            Dialogscripts.Add(new XElement("section", 
+                new XAttribute("Name", "section_exit"),
+                new XElement("EXIT")));
+
+
+            return Doc;
+        }
+        #endregion
     }
 }

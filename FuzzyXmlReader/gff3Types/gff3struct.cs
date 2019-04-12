@@ -34,11 +34,6 @@ namespace FuzzyXmlReader.gff3Types
         [XmlArray]
         public List<CGff3Object> Data { get; set; }
 
-        //HACK
-        public bool IsSection { get; set; }
-        public int sectionRef { get; set; }
-
-
 
         public List<CGff3Object> GetObjectsByName(string v)
         {

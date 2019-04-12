@@ -51,6 +51,7 @@
     <Compile Include="gff3Types\enums.cs" />
     <Compile Include="gff3Types\gff3GenericObject.cs" />
     <Compile Include="IO\gff3Writer.cs" />
+    <Compile Include="IO\ymlWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
