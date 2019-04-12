@@ -205,7 +205,15 @@ namespace FuzzyXmlReader.IO
                 Regex rgx = new Regex("[^a-zA-Z0-9]");
                 sectionname = rgx.Replace(sectionname, "");
 
-                output.Add(new XAttribute("section", $"section_{sectionname}"));
+                
+                if (type == "entry")
+                {
+                    output.Add(new XAttribute("section", $"section_start_{idx}"));
+                }
+                else
+                {
+                    output.Add(new XAttribute("section", $"section_{sectionname}"));
+                }
                 output.Add(new XAttribute("sectionRef", $"{type}_{idx}"));
             }
                 
