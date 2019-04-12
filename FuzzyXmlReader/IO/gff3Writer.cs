@@ -18,7 +18,6 @@ namespace FuzzyXmlReader.IO
             
         }
 
-        public static XElement Doc { get; set; }
 
         /// <summary>
         /// Serialize a gff3struct to xml.
@@ -55,7 +54,11 @@ namespace FuzzyXmlReader.IO
         public static void WriteCustomOutput_1(string path, gff3struct gff3)
         {
             gff3struct Gff3 = gff3;
-            Doc = new XElement("gff3CustomOutput");
+            
+
+            var Doc = new XDocument( );
+            var root = new XElement("gff3CustomOutput");
+            Doc.AddFirst(root);
 
             // starting point
             CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("StartingList");
@@ -65,11 +68,22 @@ namespace FuzzyXmlReader.IO
                 int idx = int.Parse(obj.Value.ToString());
 
                 // Write Tree
-                WriteTree(gff3, Doc, idx, "entry");
+                WriteTree(gff3, Doc.Root, idx, "entry", true);
 
             }
 
-            Doc.Save(path);
+            List<XElement> sections = Doc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
+            List<XNode> list = sections.Distinct(new XNodeEqualityComparer()).ToList(); //make distinct
+            //add to document
+            var d = new XDocument();
+            d.AddFirst(new XElement("root"));
+            foreach (var item in list)
+            {
+                d.Root.Add(item);
+            }
+            d.Save(path);
+
+            //Doc.Save(path);
         }
 
         /// <summary>
@@ -78,22 +92,30 @@ namespace FuzzyXmlReader.IO
         /// <param name="gff3"></param>
         /// <param name="idx"></param>
         /// <param name="lookIn"></param>
-        private static void WriteTree(gff3struct gff3, XElement printparent, int idx, string lookIn)
+        private static void WriteTree(gff3struct gff3, XElement printparent, int idx, string lookIn, bool isSection)
         {
             if (lookIn == "entry")
             {
                 gff3struct entry = gff3.GetEntryByIndex(idx);
 
                 //PRINT DATA
-                var output = PrintData(entry, printparent, idx, lookIn);
+                var output = PrintData(entry, printparent, idx, lookIn, isSection);
 
                 //get replies
+                // there can be more than one reply 
+                // if there is more than one reply, this marks a CHOICE
+                // and we must label all replys as goto points
                 CGff3ListObject<gff3struct> replies = entry.GetListObjectByName<gff3struct>("RepliesList");
+
                 foreach (gff3struct reply in replies.Value)
                 {
                     int newidx = int.Parse(reply.GetCommonObjectByName("Index").Value.ToString());
-                    WriteTree(gff3, output,  newidx, "reply");
+
+                    //if there is a choice, flag the two replies
+                    WriteTree(gff3, output, newidx, "reply", replies.Value.Count > 1);
                 }
+
+
 
             }
             else if (lookIn == "reply")
@@ -101,15 +123,28 @@ namespace FuzzyXmlReader.IO
                 gff3struct reply = gff3.GetReplyByIndex(idx);
 
                 //PRINT DATA
-                var output = PrintData(reply, printparent, idx, lookIn);
+                var output = PrintData(reply, printparent, idx, lookIn, isSection);
 
                 //get entries
+                // there can never be more than two entries
+                // because nps can't choose
                 CGff3ListObject<gff3struct> entries = reply.GetListObjectByName<gff3struct>("EntriesList");
-                foreach (gff3struct entry in entries.Value)
+                
+                // DEBUG
+                if (entries.Value.Count == 0)
                 {
-                    int newidx = int.Parse(entry.GetCommonObjectByName("Index").Value.ToString());
-                    WriteTree(gff3, output, newidx, "entry");
+
                 }
+                else if (entries.Value.Count == 1)
+                {
+                    int newidx = int.Parse(entries.Value.First().GetCommonObjectByName("Index").Value.ToString());
+                    WriteTree(gff3, output, newidx, "entry", false);
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+               
             }
         }
 
@@ -121,7 +156,7 @@ namespace FuzzyXmlReader.IO
         /// <param name="idx"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static XElement PrintData(gff3struct data, XElement parent, int idx, string type)
+        private static XElement PrintData(gff3struct data, XElement parent, int idx, string type, bool isSection)
         {
             CGff3Locstring locstring = (CGff3Locstring)data.GetListObjectByName<CGff3String>("Text");
             string Text = "";
@@ -136,12 +171,22 @@ namespace FuzzyXmlReader.IO
             }
             string Id = data.GetCommonObjectByName("Id").Value.ToString();
             string Speaker = data.GetCommonObjectByName("Speaker").Value.ToString();
+            string Interlocutor = data.GetCommonObjectByName("Interlocutor").Value.ToString();
+            string NodeType = data.GetCommonObjectByName("NodeType").Value.ToString();
 
-            XElement output = new XElement(type,
-                new XAttribute("idx", idx),
+            XElement output = new XElement(type);
+            
+            output.Add(
+                //new XAttribute("idx", idx),
+                //new XAttribute("NodeType", NodeType),
                 new XAttribute("Speaker", Speaker),
+                //new XAttribute("Interlocutor", Interlocutor),
                 new XAttribute("Text", Text)
                 );
+            if (isSection)
+                output.Add(new XAttribute("section", $"section_{Text.Split(' ').First()}"));
+
+
             parent.Add(output);
 
             return output;
