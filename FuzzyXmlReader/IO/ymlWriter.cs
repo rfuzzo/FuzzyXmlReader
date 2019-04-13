@@ -5,16 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace FuzzyXmlReader.IO
 {
     class ymlWriter
     {
-
-
-
-
         /// <summary>
         /// Convert XDocument to YML format.
         /// </summary>
@@ -30,9 +27,6 @@ namespace FuzzyXmlReader.IO
             {
                 using (IndentedTextWriter iw = new IndentedTextWriter(sw))
                 {
-
-
-
                     // Dialogscripts
                     #region Dialogscripts
                     iw.Indent = 0;
@@ -65,7 +59,9 @@ namespace FuzzyXmlReader.IO
                             string Speaker = el.Attribute("Speaker")?.Value;
                             string Text = el.Attribute("Text")?.Value;
 
-                            // handle special nodes first?
+                            // this doesnt get the value... what a shit... its always empty, fixing this will make the rest work.
+                            string Sound = el.Attribute("Sound")?.Value;                            
+
                             if (el.Name == "CHOICE")
                             {
                                 foreach (var choice in el.Elements())
@@ -91,8 +87,21 @@ namespace FuzzyXmlReader.IO
                             }
                             else if (!(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)))
                             {
+                                var lines = File.ReadLines("D:\\W1Files\\audiolengths.txt");
+                                string audioLength = "";
+                                string StringID = "";
+                                foreach (var line in lines)
+                                {
+                                    var arr = line.Split(';');
+                                    if (arr[0] == Sound)
+                                    {
+                                        audioLength = arr[1];
+                                        StringID = arr[2];
+                                        break;
+                                    }
+                                }
 
-                                iw.WriteLine($"- {Speaker}: \"{Text}\"");
+                                iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
                             }
 
                         }
