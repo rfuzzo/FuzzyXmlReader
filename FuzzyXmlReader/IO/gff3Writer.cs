@@ -321,6 +321,12 @@ namespace FuzzyXmlReader.IO
             }
 
 
+            string snd = data.GetCommonObjectByName("Sound")?.Value?.ToString();
+            bool issound = !string.IsNullOrEmpty(snd);
+            if (issound)
+            {
+                ret.Add(new XAttribute("Sound", snd));
+            }
 
             return sdata;
         }
