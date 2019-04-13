@@ -67,19 +67,20 @@ namespace FuzzyXmlReader.IO
             XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
             #endregion
 
+            //general settings
+            //section names
+            Settings.Add(new XElement("SectionsList"));
 
-            // get settings
+            // Speaker settings
             List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("SpeakerList"))?.Value;
             List<string> Actors = SpeakerList.Select(x => x.GetCommonObjectByName("Speaker")?.Value.ToString() )?.ToList();
+            Settings.Add(new XElement("Player"));
             Settings.Add(new XElement("Actors"));
             foreach (var actor in Actors)
-            {
                 Settings.Element("Actors").Add(new XElement("Actor", actor));
-            }
-            
 
 
-            // starting dialogscripts
+            //Dialogscripts
             CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("StartingList");
             foreach (gff3struct item in StartingList.Value)
             {
@@ -173,22 +174,43 @@ namespace FuzzyXmlReader.IO
         /// <returns></returns>
         private static XElement PrintData(gff3struct data, XElement parent, int idx, string type, bool isSection)
         {
+            //Document Settings
+            var Doc = parent.Document;
+            XElement Actors = Doc.Descendants("Settings").First()?.Element("Actors");
+            XElement Player = Doc.Descendants("Settings").First()?.Element("Player");
+            XElement SectionsList = Doc.Descendants("Settings").First()?.Element("SectionsList");
+
+            //TEXT
             CGff3Locstring locstring = (CGff3Locstring)data.GetListObjectByName<CGff3String>("Text");
             string Text = "";
             if (locstring != null)
             {
-
                 CGff3String englishText = locstring.Value.FirstOrDefault(x => x.Language == "6");
                 if (englishText != null)
-                {
                     Text = englishText.Value;
-                }
             }
-            string Id = data.GetCommonObjectByName("Id").Value.ToString();
-            string Speaker = data.GetCommonObjectByName("Speaker").Value.ToString();
+
+            //MISC
             string Interlocutor = data.GetCommonObjectByName("Interlocutor").Value.ToString();
             string NodeType = data.GetCommonObjectByName("NodeType").Value.ToString();
+            string Id = data.GetCommonObjectByName("Id").Value.ToString();
 
+            //SPEAKER
+            string Speaker = data.GetCommonObjectByName("Speaker").Value.ToString();
+            if (Speaker == "__player__")
+                Speaker = "geralt";
+            if (Speaker == "__owner__")
+                Speaker = "npc";
+            //write speakers to settings
+            if (Actors == null)
+                throw new NotImplementedException(); //should never go offbut keep it for testing
+            List<string> ActorList = Actors.Elements().Select(x => x.Value.ToString()).ToList();
+            if (!ActorList.Contains(Speaker))
+                Actors.Add(new XElement("Actor", Speaker));
+            if (Speaker == "geralt" && Player.Value != null)
+                Player.Value = Speaker;
+
+            //Add data
             XElement output = new XElement(type);
             
             output.Add(
@@ -198,29 +220,32 @@ namespace FuzzyXmlReader.IO
                 //new XAttribute("Interlocutor", Interlocutor),
                 new XAttribute("Text", Text)
                 );
+
+            //add section data
             if (isSection)
             {
                 string sectionname = Text.Split(' ').First();
-                //remove all 
                 Regex rgx = new Regex("[^a-zA-Z0-9]");
                 sectionname = rgx.Replace(sectionname, "");
 
-                
                 if (type == "entry")
-                {
-                    output.Add(new XAttribute("section", $"section_start_{idx}"));
-                }
+                    sectionname = $"section_start_{idx}";
                 else
-                {
-                    output.Add(new XAttribute("section", $"section_{sectionname}"));
-                }
-                output.Add(new XAttribute("sectionRef", $"{type}_{idx}"));
-            }
-                
+                    sectionname = $"section_{sectionname}";
 
+                List<string> sectionnames = SectionsList.Elements().Select(x => x.Value.ToString()).ToList();
+                if (sectionnames.Contains(sectionname))
+                    sectionname += $"_{idx}";
+                SectionsList.Add(new XElement("Section", $"{type}_{idx}", new XAttribute("Name", sectionname)));
+
+                output.Add(new XAttribute("section", sectionname));
+                output.Add(new XAttribute("sectionRef", $"{type}_{idx}"));
+
+                
+               
+            }
 
             parent.Add(output);
-
             return output;
         }
 
@@ -248,14 +273,11 @@ namespace FuzzyXmlReader.IO
 
             List<XElement> sections = _indoc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
             List<XElement> list = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
-            List<string> sectionIDs = list.Select(x => x.Attribute("sectionRef").Value).ToList();
 
-            //sections id, name dictionary
-            var sectionDict = new Dictionary<string, string>();
-            foreach (var item in list)
-            {
-                sectionDict.Add(item.Attribute("idx").Value, item.Attribute("section").Value);
-            }
+            List<XElement> xSections = Settings.Element("SectionsList").Elements().ToList();
+            List<string> SectionRefs = xSections.Select(x => x.Value.ToString()).ToList();
+            
+
 
 
             // loop through all section nodes
@@ -264,11 +286,11 @@ namespace FuzzyXmlReader.IO
                 string sectionName = item.Attribute("section").Value;
 
                 //delete sectionRefs througout the file (needed because the initial recursion cannot catch references to later sections)
-                var sdesc = item.Descendants().Where(x => sectionIDs.Contains(x.Attribute("idx")?.Value)).ToList();
+                var sdesc = item.Descendants().Where(x => SectionRefs.Contains(x.Attribute("idx")?.Value)).ToList();
                 foreach (var n in sdesc)
                 {
-                    var refID = n.Attribute("idx").Value;
-                    var refName = sectionDict[refID];
+                    string refID = n.Attribute("idx").Value;
+                    string refName = xSections.Find(x => x.Value == refID).Attribute("Name").Value;
                     string Text = n.Attribute("Text")?.Value;
 
                     //if was choice

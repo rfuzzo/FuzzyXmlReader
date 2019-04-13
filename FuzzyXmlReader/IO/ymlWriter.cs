@@ -42,8 +42,9 @@ namespace FuzzyXmlReader.IO
                     // Speakers
                     #region Speakers
                     List<string> Actors = Settings.Element("Actors").Elements().Select(x => x.Value.ToString()).ToList();
+                    string Player = Settings.Element("Player").Value;
                     iw.Indent = 1;
-                    iw.WriteLine($"player: geralt");
+                    iw.WriteLine($"player: {Player}");
                     iw.WriteLine($"actors: [{String.Join(", ", Actors)}]");
                     iw.WriteLine();
                     #endregion
