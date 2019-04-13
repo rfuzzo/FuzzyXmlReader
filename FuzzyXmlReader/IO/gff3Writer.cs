@@ -261,18 +261,21 @@ namespace FuzzyXmlReader.IO
             bool isQuestParent = !String.IsNullOrEmpty(dsdata.questfact);
             if (isQuestParent)
             {
+
+
                 //add to quest list
                 AddToSectionsNoDuplicates(Doc, dsdata.questfact, $"quest_{idx}");
 
                 // reshuffle nodes
                 var questelement = new XElement("QUEST",
                     new XAttribute("Name", dsdata.questfact),
+                    new XAttribute("section", $"quest_{idx}"),
                     new XAttribute("ref", $"quest_{idx}"));
 
                 var x = output.Elements().ToList();
 
                 output.Add(questelement);
-                output = output.Element("QUEST");
+                //output = output.Element("QUEST");
 
                 parent.Add(output);
             }
