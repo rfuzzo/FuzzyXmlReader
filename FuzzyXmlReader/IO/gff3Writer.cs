@@ -420,11 +420,18 @@ namespace FuzzyXmlReader.IO
 
                 //if it is a section but has no descendents that point to any other section
                 //add EXIT
-                /*if (refnode.Count == 0)
+                if (refnode.Count == 0)
                 {
-                    var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
-                    last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
-                }*/
+                    if (item.Attribute("END")?.Value != null)
+                    {
+                        item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                    }
+                    else //FIXME is that even called?
+                    {
+                        var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
+                        last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                    }
+                }
 
 
 
