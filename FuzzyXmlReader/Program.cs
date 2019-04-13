@@ -22,8 +22,8 @@ namespace FuzzyXmlReader
             
             string[] Files = new string[]
             {
-                //@"E:\_yml\cs0_06.xml",
-                //@"E:\_yml\cs0_02b.xml",
+                @"E:\_yml\cs0_06.xml",
+                @"E:\_yml\cs0_02b.xml",
                 @"E:\_yml\cn_zygfryd01.xml",
             };
 

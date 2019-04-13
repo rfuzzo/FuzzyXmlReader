@@ -57,10 +57,7 @@ namespace FuzzyXmlReader.IO
                         {
                             iw.Indent = 2;
                             string Speaker = el.Attribute("Speaker")?.Value;
-                            string Text = el.Attribute("Text")?.Value;
-
-                            // this doesnt get the value... what a shit... its always empty, fixing this will make the rest work.
-                            string Sound = el.Attribute("Sound")?.Value;                            
+                            string Text = el.Attribute("Text")?.Value;                         
 
                             if (el.Name == "CHOICE")
                             {
@@ -85,12 +82,29 @@ namespace FuzzyXmlReader.IO
                             {
                                 iw.WriteLine($"- PAUSE: 0");
                             }
-                            else if (!(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)))
+                            else if (el.Name == "SCRIPT")
                             {
-                                var lines = File.ReadLines("D:\\W1Files\\audiolengths.txt");
+                                iw.WriteLine($"- SCRIPT:");
+                                iw.Indent =3;
+                                iw.WriteLine($"- function: {el.Attribute("function").Value}");
+                                iw.WriteLine($"- parameter:");
+                                iw.Indent = 4;
+                                var param = el.Element("parameter");
+                                iw.WriteLine($"- factName: {param.Attribute("factName").Value}");
+                                iw.WriteLine($"- value: {param.Attribute("value").Value}");
+                                iw.WriteLine($"- validFor: {param.Attribute("validFor").Value}");
+                            }
+                            else if (el.Name == "reply" || el.Name == "entry")
+                            {
+                                if(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)) //FIXME does that happen?
+                                {
+                                    continue;
+                                }
+
+                                //var lines = File.ReadLines("D:\\W1Files\\audiolengths.txt");
                                 string audioLength = "";
                                 string StringID = "";
-                                foreach (var line in lines)
+                                /*foreach (var line in lines)
                                 {
                                     var arr = line.Split(';');
                                     if (arr[0] == Sound)
@@ -99,9 +113,10 @@ namespace FuzzyXmlReader.IO
                                         StringID = arr[2];
                                         break;
                                     }
-                                }
+                                }*/
 
-                                iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
+                                //iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
+                                iw.WriteLine($"- {Speaker}: \"{Text}\"");
                             }
 
                         }
