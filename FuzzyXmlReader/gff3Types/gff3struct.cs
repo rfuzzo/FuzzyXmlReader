@@ -50,7 +50,7 @@ namespace FuzzyXmlReader.gff3Types
 
 
 
-        public CGff3Object GetToplevelObjectByName(string v)
+        public CGff3Object GetGenericObjectByName(string v)
         {
             return Data.Find(x => x.Name == v);
         }
@@ -58,12 +58,12 @@ namespace FuzzyXmlReader.gff3Types
 
         public gff3struct GetEntryByIndex( int idx)
         {
-            List<gff3struct> list = ((CGff3List)GetToplevelObjectByName("EntryList")).Value;
+            List<gff3struct> list = ((CGff3List)GetGenericObjectByName("EntryList")).Value;
             return list.ElementAt(idx);
         }
         public gff3struct GetReplyByIndex( int idx)
         {
-            List<gff3struct> list = ((CGff3List)GetToplevelObjectByName("ReplyList")).Value;
+            List<gff3struct> list = ((CGff3List)GetGenericObjectByName("ReplyList")).Value;
             return list.ElementAt(idx);
         }
        

@@ -57,7 +57,6 @@ namespace FuzzyXmlReader.IO
                         string sectionName = $"{section.Attribute("Name").Value}:";
                         iw.WriteLine(sectionName);
 
-                        //List<XNode> descedentNodes = section.DescendantNodes().ToList();
                         List<XElement> descedents = section.Descendants().ToList();
                         
                         foreach (XElement el in descedents)
@@ -66,11 +65,8 @@ namespace FuzzyXmlReader.IO
                             string Speaker = el.Attribute("Speaker")?.Value;
                             string Text = el.Attribute("Text")?.Value;
 
-                            if (!(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)))
-                            {
-                                iw.WriteLine($"- {Speaker}: \"{Text}\"");
-                            }
-                            else if (el.Name == "CHOICE")
+                            // handle special nodes first?
+                            if (el.Name == "CHOICE")
                             {
                                 foreach (var choice in el.Elements())
                                 {
@@ -86,9 +82,18 @@ namespace FuzzyXmlReader.IO
                             }
                             else if (el.Name == "EXIT")
                             {
+                                iw.WriteLine($"- OUTPUT: Out1");
                                 iw.WriteLine($"- EXIT");
                             }
+                            else if (el.Name == "PAUSE")
+                            {
+                                iw.WriteLine($"- PAUSE: 0");
+                            }
+                            else if (!(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)))
+                            {
 
+                                iw.WriteLine($"- {Speaker}: \"{Text}\"");
+                            }
 
                         }
                         iw.WriteLine();

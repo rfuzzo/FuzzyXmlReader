@@ -12,6 +12,12 @@ using System.Xml.Serialization;
 
 namespace FuzzyXmlReader.IO
 {
+    public struct SDialogscriptdata
+    {
+        public string questfact { get; set; }
+    }
+
+
     class gff3Writer
     {
         public gff3Writer()
@@ -63,34 +69,51 @@ namespace FuzzyXmlReader.IO
             Doc.Root.Add(
                 new XElement("Settings"),
                 new XElement("Dialogscripts"));
-            XElement Settings = Doc.Descendants("Settings").First();
             XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
-            #endregion
-
-            //general settings
-            //section names
+            XElement Settings = Doc.Descendants("Settings").First();
+            Settings.Add(new XElement("Actors"));
+            Settings.Add(new XElement("Player"));
             Settings.Add(new XElement("SectionsList"));
+            #endregion
+            
 
             // Speaker settings
-            List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("SpeakerList"))?.Value;
+            List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)gff3.GetGenericObjectByName("SpeakerList"))?.Value;
             List<string> Actors = SpeakerList.Select(x => x.GetCommonObjectByName("Speaker")?.Value.ToString() )?.ToList();
-            Settings.Add(new XElement("Player"));
-            Settings.Add(new XElement("Actors"));
             foreach (var actor in Actors)
                 Settings.Element("Actors").Add(new XElement("Actor", actor));
 
-
             //Dialogscripts
-            CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetToplevelObjectByName("StartingList");
-            foreach (gff3struct item in StartingList.Value)
+            CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetGenericObjectByName("StartingList");
+            for (int i = 0; i < StartingList.Value.Count; i++)
             {
+                
+                //add generic start sections to section list
+                // FIXME pause?
+                var startelement = new XElement("PAUSE",
+                    //new XAttribute("section", $"section_start_{i}"),
+                    new XAttribute("ref", $"start_{i}")
+                    );
+                Dialogscripts.Add(startelement);
+                Settings.Element("SectionsList").Add(new XElement("Section", $"start_{i}", new XAttribute("Name", $"section_start_{i}")));
+
+
+                //
+                gff3struct item = (gff3struct)StartingList.Value[i];
                 CGff3GenericObject obj = item.GetCommonObjectByName("Index");
                 int idx = int.Parse(obj.Value.ToString());
 
                 // Write Tree
-                WriteTree(gff3, Dialogscripts, idx, "entry", true);
+                WriteTree(gff3, startelement, idx, "entry", true);
 
+                
             }
+
+            //Modify Speaker Section
+            string player = Settings.Element("Player").Value;
+            List<string> actors = Settings.Element("Actors").Descendants()?.Select(x => x.Value).ToList();
+            if (String.IsNullOrEmpty(player))
+                Settings.Element("Player").Value = actors.First();
 
             return Doc;
         }
@@ -100,15 +123,17 @@ namespace FuzzyXmlReader.IO
         /// </summary>
         /// <param name="gff3"></param>
         /// <param name="idx"></param>
-        /// <param name="lookIn"></param>
-        private static void WriteTree(gff3struct gff3, XElement printparent, int idx, string lookIn, bool isSection)
+        /// <param name="type"></param>
+        private static void WriteTree(gff3struct gff3, XElement printparent, int idx, string type, bool isSection)
         {
-            if (lookIn == "entry")
+            XElement output = new XElement(type);
+            if (type == "entry")
             {
                 gff3struct entry = gff3.GetEntryByIndex(idx);
 
                 //PRINT DATA
-                var output = PrintData(entry, printparent, idx, lookIn, isSection);
+                
+                bool isquest = AnnotateXML(entry, printparent, idx, type, isSection, ref output);
 
                 //get replies
                 // there can be more than one reply 
@@ -131,15 +156,16 @@ namespace FuzzyXmlReader.IO
                     int newidx = int.Parse(reply.GetCommonObjectByName("Index").Value.ToString());
 
                     //if there is a choice, flag the two replies
-                    WriteTree(gff3, output, newidx, "reply", replies.Value.Count > 1);
+                    bool ischildSection = isSection || replies.Value.Count > 1 || isquest;
+                    WriteTree(gff3, output, newidx, "reply", ischildSection);
                 }
             }
-            else if (lookIn == "reply")
+            else if (type == "reply")
             {
                 gff3struct reply = gff3.GetReplyByIndex(idx);
 
                 //PRINT DATA
-                var output = PrintData(reply, printparent, idx, lookIn, isSection);
+                var isquest = AnnotateXML(reply, printparent, idx, type, isSection, ref output);
 
                 //get entries
                 // there can never be more than two entries
@@ -148,13 +174,12 @@ namespace FuzzyXmlReader.IO
                 
                 if (entries.Value.Count == 0)
                 {
-                    //is end? //FIXME
                     output.Add(new XAttribute("END", "true"));
                 }
                 else if (entries.Value.Count == 1)
                 {
                     int newidx = int.Parse(entries.Value.First().GetCommonObjectByName("Index").Value.ToString());
-                    WriteTree(gff3, output, newidx, "entry", false);
+                    WriteTree(gff3, output, newidx, "entry", isquest);
                 }
                 else
                 {
@@ -172,13 +197,16 @@ namespace FuzzyXmlReader.IO
         /// <param name="idx"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static XElement PrintData(gff3struct data, XElement parent, int idx, string type, bool isSection)
+        private static bool AnnotateXML(gff3struct data, XElement parent, int idx, string type, bool isSection, ref XElement output)
         {
             //Document Settings
             var Doc = parent.Document;
             XElement Actors = Doc.Descendants("Settings").First()?.Element("Actors");
             XElement Player = Doc.Descendants("Settings").First()?.Element("Player");
-            XElement SectionsList = Doc.Descendants("Settings").First()?.Element("SectionsList");
+
+            List<XAttribute> attributes = new List<XAttribute>();
+            //attributes.Add(new XAttribute("Idx", idx));
+            output.Add(new XAttribute("ref", $"{type}_{idx}"));
 
             //TEXT
             CGff3Locstring locstring = (CGff3Locstring)data.GetListObjectByName<CGff3String>("Text");
@@ -189,11 +217,7 @@ namespace FuzzyXmlReader.IO
                 if (englishText != null)
                     Text = englishText.Value;
             }
-
-            //MISC
-            string Interlocutor = data.GetCommonObjectByName("Interlocutor").Value.ToString();
-            string NodeType = data.GetCommonObjectByName("NodeType").Value.ToString();
-            string Id = data.GetCommonObjectByName("Id").Value.ToString();
+            attributes.Add(new XAttribute("Text", Text));
 
             //SPEAKER
             string Speaker = data.GetCommonObjectByName("Speaker").Value.ToString();
@@ -205,49 +229,100 @@ namespace FuzzyXmlReader.IO
             if (Actors == null)
                 throw new NotImplementedException(); //should never go offbut keep it for testing
             List<string> ActorList = Actors.Elements().Select(x => x.Value.ToString()).ToList();
+            //Add actors to actorlist
             if (!ActorList.Contains(Speaker))
                 Actors.Add(new XElement("Actor", Speaker));
             if (Speaker == "geralt" && Player.Value != null)
                 Player.Value = Speaker;
+            attributes.Add(new XAttribute("Speaker", Speaker));
 
-            //Add data
-            XElement output = new XElement(type);
-            
-            output.Add(
-                new XAttribute("idx", $"{type}_{idx}"),
-                //new XAttribute("NodeType", NodeType),
-                new XAttribute("Speaker", Speaker),
-                //new XAttribute("Interlocutor", Interlocutor),
-                new XAttribute("Text", Text)
-                );
+            //OTHER 
+            var dsdata = AttributeData(data, ref attributes);
+            //QUESTS
+           
+
+            //ADD
+            output.Add(attributes.ToArray());
 
             //add section data
             if (isSection)
             {
+               
+                //remove special charactersand to lower
                 string sectionname = Text.Split(' ').First();
                 Regex rgx = new Regex("[^a-zA-Z0-9]");
-                sectionname = rgx.Replace(sectionname, "");
+                sectionname = $"section_{rgx.Replace(sectionname, "").ToLower()}_{idx}";
 
-                if (type == "entry")
-                    sectionname = $"section_start_{idx}";
-                else
-                    sectionname = $"section_{sectionname}";
-
-                List<string> sectionnames = SectionsList.Elements().Select(x => x.Value.ToString()).ToList();
-                if (sectionnames.Contains(sectionname))
-                    sectionname += $"_{idx}";
-                SectionsList.Add(new XElement("Section", $"{type}_{idx}", new XAttribute("Name", sectionname)));
-
+                //add to sections list
+                AddToSectionsNoDuplicates(Doc, sectionname, $"{type}_{idx}");
                 output.Add(new XAttribute("section", sectionname));
-                output.Add(new XAttribute("sectionRef", $"{type}_{idx}"));
-
-                
-               
             }
 
-            parent.Add(output);
-            return output;
+            bool isQuestParent = !String.IsNullOrEmpty(dsdata.questfact);
+            if (isQuestParent)
+            {
+                //add to quest list
+                AddToSectionsNoDuplicates(Doc, dsdata.questfact, $"quest_{idx}");
+
+                // reshuffle nodes
+                var questelement = new XElement("QUEST",
+                    new XAttribute("Name", dsdata.questfact),
+                    new XAttribute("ref", $"quest_{idx}"));
+
+                var x = output.Elements().ToList();
+
+                output.Add(questelement);
+                output = output.Element("QUEST");
+
+                parent.Add(output);
+            }
+            else
+            {
+                parent.Add(output);
+            }
+
+            return isQuestParent;
         }
+
+        private static void AddToSectionsNoDuplicates(XDocument doc, string name, string id)
+        {
+            XElement SectionsList = doc.Descendants("Settings").First()?.Element("SectionsList");
+
+            var sectionelement = new XElement("Section", id, new XAttribute("Name", name));
+            var d = SectionsList.Elements().ToList();
+            if (!d.Contains(sectionelement, new XNodeEqualityComparer()))   //does not contain exactlty that node (name and ref)
+                SectionsList.Add(sectionelement);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="idx"></param>
+        /// <returns></returns>
+        private static SDialogscriptdata AttributeData(gff3struct data, ref List<XAttribute> ret)
+        {
+            var sdata = new SDialogscriptdata();
+
+            //MISC
+            //ret.Add(new XAttribute("Interlocutor", data.GetCommonObjectByName("Interlocutor").Value.ToString()));
+            //ret.Add(new XAttribute("NodeType", data.GetCommonObjectByName("NodeType").Value.ToString()));
+            //ret.Add(new XAttribute("Id", data.GetCommonObjectByName("Id").Value.ToString()));
+
+            string qf = data.GetCommonObjectByName("Quest")?.Value?.ToString();
+            bool isquest = !string.IsNullOrEmpty(qf);
+            if (isquest)
+            {
+                ret.Add(new XAttribute("Quest", qf));
+                sdata.questfact = qf;
+            }
+
+
+
+            return sdata;
+        }
+
+        
 
         #endregion
 
@@ -280,22 +355,23 @@ namespace FuzzyXmlReader.IO
 
 
 
-            // loop through all section nodes
+            // loop through all start section nodes
             foreach (var item in list)
             {
                 string sectionName = item.Attribute("section").Value;
 
-                //delete sectionRefs througout the file (needed because the initial recursion cannot catch references to later sections)
-                var sdesc = item.Descendants().Where(x => SectionRefs.Contains(x.Attribute("idx")?.Value)).ToList();
-                foreach (var n in sdesc)
+                //check if any of the descendents have a reference to another section
+                var refnode = item.Descendants().Where(x => SectionRefs.Contains(x.Attribute("ref")?.Value)).ToList();
+                foreach (var n in refnode)
                 {
-                    string refID = n.Attribute("idx").Value;
+                    string refID = n.Attribute("ref").Value;
                     string refName = xSections.Find(x => x.Value == refID).Attribute("Name").Value;
                     string Text = n.Attribute("Text")?.Value;
 
                     //if was choice
                     if (n.Parent.Attribute("CHOICE") != null)
                     {
+                        // if there is already a choice node
                         if (n.Parent.Element("CHOICE") != null)
                         {
                             n.Parent.Element("CHOICE")?.Add(new XElement("CREF",
@@ -303,6 +379,7 @@ namespace FuzzyXmlReader.IO
                                 new XAttribute("Text", Text)
                                 ));
                         }
+                        //otherwise add a choice node
                         else
                             n.Parent.Add(new XElement("CHOICE",
                                 new XElement("CREF",
@@ -310,22 +387,24 @@ namespace FuzzyXmlReader.IO
                                 new XAttribute("Text", Text)
                                 )));
                     }
+                    // no choice but found a reference
                     else
                     {
                         n.Parent.Add(new XElement("REF",
-                            new XAttribute("NEXT", refName),
-                            new XAttribute("Text", Text)
+                            new XAttribute("NEXT", refName)
+                            //new XAttribute("Text", Text)
                             ));
                     }
                     n.Remove();
                 }
 
-                //add end sections
-                if (sdesc.Count == 0)
+                //if it is a section but has no descendents that point to any other section
+                //add EXIT
+                /*if (refnode.Count == 0)
                 {
                     var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
                     last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
-                }
+                }*/
 
 
 
