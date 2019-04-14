@@ -19,7 +19,9 @@ namespace FuzzyXmlReader
     {
         static int Main(string[] args)
         {
-            
+            string stringsfie = ";meta[language=en]\n; id      |key(hex)|key(str)| text\n";
+            File.WriteAllText(@"D:\W1Files\locale.en.csv", stringsfie);
+
             string[] Files = new string[]
             {
                 //@"E:\_yml\cs0_06.xml",

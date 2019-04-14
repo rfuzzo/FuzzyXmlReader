@@ -27,15 +27,68 @@ namespace FuzzyXmlReader.IO
             {
                 using (IndentedTextWriter iw = new IndentedTextWriter(sw))
                 {
-                    // Dialogscripts
-                    #region Dialogscripts
+                    List<string> Actors = Settings.Element("Actors").Elements().Select(x => x.Value.ToString()).ToList();
+
+
+                    #region Repository
                     iw.Indent = 0;
-                    iw.WriteLine("dialogScript:");
+                    iw.WriteLine("repository:");
+                    iw.Indent = 1;
+                    iw.WriteLine("actors:");                    
+                    foreach (string actor in Actors)
+                    {
+                        iw.Indent = 2;
+                        iw.WriteLine(actor+":");
+                        if(actor == "geralt")
+                        {
+                            iw.Indent = 3;
+                            iw.WriteLine("template: \"gameplay/templates/characters/player/player.w2ent\"");
+                            iw.WriteLine();
+                        }
+                        else
+                        {
+                            iw.Indent = 3;
+                            iw.WriteLine("template: \"dlc/dlcw1/data/characters/eskel.w2ent\"");
+                            iw.WriteLine("appearance: [ \"default\" ]");
+                            iw.WriteLine();
+                        }
+                    }
+
+                    iw.Indent = 1;
+                    iw.WriteLine("cameras:");
+                    /*var dialogCameras = File.ReadLines("D:\\W1Files\\cameras_"+Actors.Count.ToString()+".txt");
+                    foreach(string line in dialogCameras)
+                    {
+                        iw.Indent = 0;
+                        iw.WriteLine(line);
+                    }*/
+
+
+                    iw.WriteLine();
+                    #endregion
+
+                    #region Production
+                    iw.Indent = 0;
+                    iw.WriteLine("production:");
+                    iw.WriteLine();
+                    #endregion
+
+                    #region Storyboard
+                    iw.Indent = 0;
+                    iw.WriteLine("storyboard:");
+                    iw.WriteLine();
+                    #endregion
+
+
+                    // Dialogscripts
+                    #region Dialogscript
+                    iw.Indent = 0;
+                    iw.WriteLine("dialogscript:");
 
 
                     // Speakers
                     #region Speakers
-                    List<string> Actors = Settings.Element("Actors").Elements().Select(x => x.Value.ToString()).ToList();
+                    
                     string Player = Settings.Element("Player").Value;
                     iw.Indent = 1;
                     iw.WriteLine($"player: {Player}");
@@ -49,6 +102,7 @@ namespace FuzzyXmlReader.IO
                     {
                         iw.Indent = 1;
                         string sectionName = $"{section.Attribute("Name").Value}:";
+                        int shotID = 1;
                         iw.WriteLine(sectionName);
 
                         List<XElement> descedents = section.Descendants().ToList();
@@ -58,8 +112,6 @@ namespace FuzzyXmlReader.IO
                             iw.Indent = 2;
                             string Speaker = el.Attribute("Speaker")?.Value;
                             string Text = el.Attribute("Text")?.Value;
-
-                            // this doesnt get the value... what a shit... its always empty, fixing this will make the rest work.
                             string Sound = el.Attribute("Sound")?.Value;                            
 
                             if (el.Name == "CHOICE")
@@ -101,7 +153,12 @@ namespace FuzzyXmlReader.IO
                                     }
                                 }
 
+                                string shotName = $"shot_{ shotID.ToString()}_{Speaker}";
+                                shotID += 1;
+                                iw.WriteLine($"- CUE: {shotName}");
                                 iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
+
+                                File.AppendAllText(@"D:\W1Files\locale.en.csv", $"{StringID}|00000000||{Text}" + Environment.NewLine);
                             }
 
                         }
