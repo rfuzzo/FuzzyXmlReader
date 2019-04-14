@@ -25,11 +25,33 @@ namespace FuzzyXmlReader.IO
 
             using (StreamWriter sw = new StreamWriter(path))
             {
-                using (IndentedTextWriter iw = new IndentedTextWriter(sw))
+                using (IndentedTextWriter iw = new IndentedTextWriter(sw, "  "))
                 {
                     List<string> Actors = Settings.Element("Actors").Elements().Select(x => x.Value.ToString()).ToList();
 
+                    string filename = path.Substring(path.LastIndexOf("\\") + 1, path.Length - path.LastIndexOf("\\") - 1).Replace(".yml", "");
+                    string newActorName = "";
+                    if(Actors.Count == 2 && Actors[0] == "npc")
+                    {
+                        if (filename.Contains("zygfryd"))
+                        {
+                            Actors[0] = "siegfried";
+                            newActorName = "siegfried";
+                        }                            
+                        if (filename.Contains("zygfryd"))
+                        {
+                            Actors[0] = "siegfried";
+                            newActorName = "siegfried";
+                        }
+                            
+                    }
+                    else if (Actors.Count == 2 && Actors[1] == "npc")
+                    {
 
+                    }
+                    // --------------------------------------------------------------------------------------
+                    // Writing Repo
+                    // --------------------------------------------------------------------------------------
                     #region Repository
                     iw.Indent = 0;
                     iw.WriteLine("repository:");
@@ -56,31 +78,127 @@ namespace FuzzyXmlReader.IO
 
                     iw.Indent = 1;
                     iw.WriteLine("cameras:");
-                    /*var dialogCameras = File.ReadLines("D:\\W1Files\\cameras_"+Actors.Count.ToString()+".txt");
+                    var dialogCameras = File.ReadLines("D:\\W1Files\\cameras.csv");
                     foreach(string line in dialogCameras)
                     {
-                        iw.Indent = 0;
-                        iw.WriteLine(line);
-                    }*/
-
+                        if(line.StartsWith("dialogset_1_vs_1_around_npc"))
+                        {
+                            string[] camSettings = line.Split(';');
+                            iw.Indent = 2;
+                            iw.WriteLine($"{camSettings[1]}:");
+                            iw.Indent = 3;
+                            iw.WriteLine($"fov: {camSettings[4]}");
+                            iw.WriteLine("transform:");
+                            iw.Indent = 4;
+                            iw.WriteLine($"pos: {camSettings[2]}");
+                            iw.WriteLine($"rot: {camSettings[3]}");
+                            iw.Indent = 3;
+                            iw.WriteLine($"#zoom: {camSettings[5]}");
+                            iw.WriteLine("dof:");
+                            iw.Indent = 4;
+                            iw.WriteLine("aperture: [ 28.2495, 1.27007]");
+                            iw.WriteLine($"blur: [ {camSettings[10]}, {camSettings[7]}]");
+                            iw.WriteLine($"focus: [ {camSettings[9]}, {camSettings[6]}]");
+                            iw.WriteLine($"intensity: {camSettings[8]}");
+                            iw.Indent = 3;
+                            iw.WriteLine("event_generator:");
+                            iw.Indent = 4;
+                            iw.WriteLine($"plane: \"{camSettings[12]}\"");
+                            iw.WriteLine($"tags: {camSettings[13].Replace("[","[ \"").Replace("]", "\" ]")}");
+                            iw.WriteLine();
+                        }                        
+                    }
+                    //   0           1      2   3   4    5         6             7               8            9                10             11           12          13       14
+                    //dialogset;cameraName;pos;rot;fov;zoom;dofFocusDistFar;dofBlurDistFar;dofIntensity;dofFocusDistNear;dofBlurDistNear;dofFfocalLength;dofDistance;dofPlane;dofTags;
+                    //dialogset_1_vs_1_around_npc;1_2_medium_ext;[-1.06,-1.18,1.70];[355.8,-0.0,332.6];20;2;2.5;5;1;1.69;28.2495;1.27007;Medium;[ext];
 
                     iw.WriteLine();
                     #endregion
-
+                    // --------------------------------------------------------------------------------------
+                    // Writing Production
+                    // --------------------------------------------------------------------------------------
                     #region Production
                     iw.Indent = 0;
                     iw.WriteLine("production:");
+
+                    iw.Indent = 1;
+                    iw.WriteLine("settings:");
+                    iw.Indent = 2;
+                    iw.WriteLine("sceneid: 1");
+                    iw.WriteLine("strings-idspace: 0000");
+                    iw.WriteLine("strings-idstart: 0");
+                    iw.WriteLine();
+
+
+                    iw.Indent = 1;
+                    iw.WriteLine($"placement: \"{Actors[0]}\"");
+                    iw.WriteLine();
+                    iw.WriteLine("assets:");
+                    iw.Indent = 2;
+                    iw.WriteLine("actors:");
+                    foreach (string actor in Actors)
+                    {
+                        iw.Indent = 3;
+                        iw.WriteLine($"{actor}:");
+                        iw.Indent = 4;
+                        iw.WriteLine($"repo: \"{actor}\"");
+                        iw.WriteLine("by_voicetag: true");
+                        if(actor == "geralt")
+                            iw.WriteLine($"tags: [ \"PLAYER\" ]");
+                        else
+                            iw.WriteLine($"tags: [ \"{actor}\" ]");
+                        iw.WriteLine();
+                    }
+
+                    iw.Indent = 2;
+                    iw.WriteLine("cameras:");
+                    foreach (string line in dialogCameras)
+                    {
+                        if (line.StartsWith("dialogset_1_vs_1_around_npc"))
+                        {
+                            string[] camSettings = line.Split(';');
+                            iw.Indent = 3;
+                            iw.WriteLine($"{camSettings[1]}:");
+                            iw.Indent = 4;
+                            iw.WriteLine($"repo: \"{camSettings[1]}\"");
+                            iw.WriteLine();
+                        }
+                    }
+
+
                     iw.WriteLine();
                     #endregion
-
+                    // --------------------------------------------------------------------------------------
+                    // Writing Storyboard
+                    // --------------------------------------------------------------------------------------
                     #region Storyboard
                     iw.Indent = 0;
                     iw.WriteLine("storyboard:");
+                    iw.Indent = 1;
+                    iw.WriteLine("defaults:");                    
+                    if(Actors.Count == 2)
+                    {
+                        iw.Indent = 2;
+                        iw.WriteLine("placement:");
+                        iw.Indent = 3;
+                        iw.WriteLine($"{Actors[1]}: [[ 0.0, 1.6, 0.0 ], [ 0.0, 0.0, 180.0 ]]");
+                        iw.WriteLine($"{Actors[0]}: [[ 0.0, 0.0, 0.0 ], [ 0.0, 0.0, 0.0 ]]");
+                        iw.WriteLine();
+                        iw.Indent = 2;
+                        iw.WriteLine("camera:");
+                        iw.Indent = 3;
+                        iw.WriteLine($"{Actors[1]}: 1_2_medium_ext");
+                        iw.WriteLine($"{Actors[0]}: 2_1_medium_ext");
+                        iw.WriteLine();
+                    }
+
                     iw.WriteLine();
                     #endregion
 
 
-                    // Dialogscripts
+                    // --------------------------------------------------------------------------------------
+                    // Writing Dialogscript
+                    // --------------------------------------------------------------------------------------
                     #region Dialogscript
                     iw.Indent = 0;
                     iw.WriteLine("dialogscript:");
@@ -153,10 +271,14 @@ namespace FuzzyXmlReader.IO
                                     }
                                 }
 
-                                string shotName = $"shot_{ shotID.ToString()}_{Speaker}";
+                                //string shotName = $"shot_{ shotID.ToString()}_{Speaker}";
+                                string shotName = $"shot_{ shotID.ToString()}";
                                 shotID += 1;
                                 iw.WriteLine($"- CUE: {shotName}");
-                                iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
+                                if(newActorName != "" && Speaker == "npc")
+                                    iw.WriteLine($"- {newActorName}: \"[{audioLength}]{StringID}|{Text}\"");
+                                else
+                                    iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
 
                                 File.AppendAllText(@"D:\W1Files\locale.en.csv", $"{StringID}|00000000||{Text}" + Environment.NewLine);
                             }

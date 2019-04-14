@@ -225,6 +225,17 @@ namespace FuzzyXmlReader.IO
                 Speaker = "geralt";
             if (Speaker == "__owner__")
                 Speaker = "npc";
+
+
+
+
+
+
+
+
+
+
+
             //write speakers to settings
             if (Actors == null)
                 throw new NotImplementedException(); //should never go offbut keep it for testing
