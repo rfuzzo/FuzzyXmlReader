@@ -235,8 +235,10 @@ namespace FuzzyXmlReader.IO
 
                             if (el.Name == "CHOICE")
                             {
+                                iw.WriteLine("- CHOICE:");
                                 foreach (var choice in el.Elements())
                                 {
+                                    iw.Indent = 3;
                                     string SectionName = choice.Attribute("NEXT")?.Value;
                                     string choiceText = choice.Attribute("Text")?.Value;
                                     iw.WriteLine($"- [\"{choiceText}\", {SectionName}]");
