@@ -20,13 +20,14 @@ namespace FuzzyXmlReader
         static int Main(string[] args)
         {
             string stringsfie = ";meta[language=en]\n; id      |key(hex)|key(str)| text\n";
-            File.WriteAllText(@"D:\W1Files\locale.en.csv", stringsfie);
+            string ResourceDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
+            File.WriteAllText(Path.Combine(ResourceDir, "locale.en.csv"), stringsfie);
 
             string[] Files = new string[]
             {
-                @"E:\_yml\cs0_06.xml",
-                @"E:\_yml\cs0_02b.xml",
-                @"E:\_yml\cn_zygfryd01.xml",
+                //Path.Combine(ResourceDir, "cs0_06.xml"),
+                //Path.Combine(ResourceDir, "cs0_02b.xml"),
+                Path.Combine(ResourceDir, "cn_zygfryd01.xml"),
             };
 
             foreach (var file in Files)
@@ -46,14 +47,14 @@ namespace FuzzyXmlReader
             #region Save Settings
             var filename = Path.GetFileNameWithoutExtension(infile);
             var fileDirectory = Path.GetDirectoryName(infile);
-            var newDirectory = Path.Combine(fileDirectory, filename);
+            var newDirectory = Path.Combine(fileDirectory, $"out/{filename}");
 
             if (!Directory.Exists(newDirectory))
                 Directory.CreateDirectory(newDirectory);
 
             string outfile = Path.Combine(newDirectory, $"{filename}_out.xml");
             string outfile_sections = Path.Combine(newDirectory, $"{filename}_sections.xml");
-            string outfile_yml = Path.Combine(fileDirectory, $"{filename}.yml");
+            string outfile_yml = Path.Combine(newDirectory, $"{filename}.yml");
 
             #endregion 
 

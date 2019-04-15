@@ -21,7 +21,7 @@ namespace FuzzyXmlReader.IO
         {
             XElement Settings = gff3.Descendants("Settings").First();
             XElement Dialogscripts = gff3.Descendants("Dialogscripts").First();
-            
+            string ResourceDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
 
             using (StreamWriter sw = new StreamWriter(path))
             {
@@ -78,7 +78,7 @@ namespace FuzzyXmlReader.IO
 
                     iw.Indent = 1;
                     iw.WriteLine("cameras:");
-                    var dialogCameras = File.ReadLines("D:\\W1Files\\cameras.csv");
+                    var dialogCameras = File.ReadLines(Path.Combine(ResourceDir, "cameras.csv"));
                     foreach(string line in dialogCameras)
                     {
                         if(line.StartsWith("dialogset_1_vs_1_around_npc"))
@@ -275,7 +275,7 @@ namespace FuzzyXmlReader.IO
                                     continue;
                                 }
 
-                                var lines = File.ReadLines("D:\\W1Files\\audiolengths.txt");
+                                var lines = File.ReadLines(Path.Combine(ResourceDir, "audiolengths.txt"));
                                 string audioLength = "";
                                 string StringID = "";
                                 foreach (var line in lines)
@@ -298,7 +298,7 @@ namespace FuzzyXmlReader.IO
                                 else
                                     iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
 
-                                File.AppendAllText(@"D:\W1Files\locale.en.csv", $"{StringID}|00000000||{Text}" + Environment.NewLine);
+                                File.AppendAllText(Path.Combine(ResourceDir, "locale.en.csv"), $"{StringID}|00000000||{Text}" + Environment.NewLine);
                             }
 
                         }

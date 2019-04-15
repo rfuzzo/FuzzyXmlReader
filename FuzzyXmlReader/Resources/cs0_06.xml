@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<gff3 type="DLG">
+  <struct id="4294967295">
+    <uint32 label="DelayEntry">3045472189</uint32>
+    <uint32 label="DelayReply">1053299625</uint32>
+    <exostring label="OwnerID"></exostring>
+    <exostring label="PlayerID"></exostring>
+    <resref label="EndConversation"></resref>
+    <resref label="EndConverAbort"></resref>
+    <byte label="PreventZoomIn">0</byte>
+    <char label="bStartEffect">1</char>
+    <char label="bEndEffect">1</char>
+    <char label="ForceInteractive">0</char>
+    <list label="SpeakerList">
+      <struct id="0">
+        <exostring label="Speaker">Vesemir</exostring>
+      </struct>
+      <struct id="0">
+        <exostring label="Speaker">Triss</exostring>
+      </struct>
+    </list>
+    <list label="FlagList"/>
+    <list label="EntryList">
+      <struct id="0">
+        <uint32 label="Id">17</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">Vesemir</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Ziemia drży, czujecie?</string>
+          <string language="2">The ground is shaking, feel it?</string>
+          <string language="6">The ground is shaking, feel it?</string>
+          <string language="10">Ziemia drży, czujecie?</string>
+          <string language="20">Der Boden bebt, spürt Ihr es?</string>
+          <string language="22">La terre tremble... Vous le sentez ?</string>
+          <string language="24">El suelo tiembla. ¿Lo notas?</string>
+          <string language="26">Il suolo trema, lo senti?</string>
+          <string language="28">Земля дрожит, чувствуете?</string>
+          <string language="30">Země se otřásá, cítíš to?</string>
+          <string language="32">Remeg a föld, érzed?</string>
+          <string language="42">地面在震動，有感覺到嗎？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">vsmr_1619_797</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">0</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context">Cutscene after returning from the lab, after talk with triss and Vesemir. Monster destroys the wall.</exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="0">
+        <uint32 label="Id">2147483651</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Uważajcie!</string>
+          <string language="2">Watch out!</string>
+          <string language="6">Watch out!</string>
+          <string language="10">Uważajcie!</string>
+          <string language="20">Vorsicht!</string>
+          <string language="22">Attention !</string>
+          <string language="24">¡Cuidado!</string>
+          <string language="26">Attenti!</string>
+          <string language="28">Берегись!</string>
+          <string language="30">Pozor!</string>
+          <string language="32">Vigyázz!</string>
+          <string language="42">小心啊！</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_1619_366</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList"/>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="ReplyList">
+      <struct id="0">
+        <uint32 label="Id">2147483648</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">Triss</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Zaraz się przebiją.</string>
+          <string language="2">They&apos;re breaking through.</string>
+          <string language="6">They&apos;re breaking through.</string>
+          <string language="10">Zaraz się przebiją!</string>
+          <string language="20">Sie brechen durch.</string>
+          <string language="22">Ils sont passés !</string>
+          <string language="24">Van a abrirse paso.</string>
+          <string language="26">Si fanno strada con la forza.</string>
+          <string language="28">Сейчас прорвутся.</string>
+          <string language="30">Už tu skoro jsou.</string>
+          <string language="32">Áttörnek!</string>
+          <string language="42">他們要攻過來了。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">trss_1619_332</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">1</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="StartingList">
+      <struct id="0">
+        <resref label="Active"></resref>
+        <uint32 label="Index">0</uint32>
+      </struct>
+    </list>
+  </struct>
+</gff3>

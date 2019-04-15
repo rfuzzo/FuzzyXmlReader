@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<gff3 type="DLG">
+  <struct id="4294967295">
+    <uint32 label="DelayEntry">1570844312</uint32>
+    <uint32 label="DelayReply">294786416</uint32>
+    <exostring label="OwnerID"></exostring>
+    <exostring label="PlayerID"></exostring>
+    <resref label="EndConversation"></resref>
+    <resref label="EndConverAbort"></resref>
+    <byte label="PreventZoomIn">0</byte>
+    <char label="bStartEffect">1</char>
+    <char label="bEndEffect">1</char>
+    <char label="ForceInteractive">0</char>
+    <list label="SpeakerList">
+      <struct id="0">
+        <exostring label="Speaker">Leo</exostring>
+      </struct>
+      <struct id="0">
+        <exostring label="Speaker">Triss</exostring>
+      </struct>
+      <struct id="0">
+        <exostring label="Speaker">Azar</exostring>
+      </struct>
+    </list>
+    <list label="FlagList"/>
+    <list label="EntryList">
+      <struct id="0">
+        <uint32 label="Id">2147483791</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">Azar</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Magister, znasz drogę. Bierzcie się do roboty.</string>
+          <string language="2">Phed, you know the way. Get down to it now!</string>
+          <string language="6">Professor, you know the way. Get to it.</string>
+          <string language="10">Magister, znasz drogę. Do roboty.</string>
+          <string language="20">Professor, Ihr kennt den Weg. Beeilung.</string>
+          <string language="22">Professeur, vous savez quoi faire ! Allez-y !</string>
+          <string language="24">Profesor, conoces el camino. Adelante.</string>
+          <string language="26">Professore, conosci la strada. Mettiti al lavoro.</string>
+          <string language="28">Профессор, ты знаешь путь. Веди.</string>
+          <string language="30">Cestu znáš. Do práce.</string>
+          <string language="32">Professzor, tudod az utat. Menj.</string>
+          <string language="42">教授，你知道路，快進去。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">azar_1617_3821</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">Azar</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">0</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="0">
+        <uint32 label="Id">2147484557</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">Triss</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Ten w okularach to Magister, zabójca do wynajęcia...</string>
+          <string language="2">The one in glasses is Professor. Murder for hire…</string>
+          <string language="6">The one in glasses is the Professor. Murder for hire…</string>
+          <string language="10">Ten w okularach to Magister, zabójca do wynajęcia...</string>
+          <string language="20">Der mit der Brille ist der Professor. Ein Auftragsmörder ...</string>
+          <string language="22">L&apos;homme aux lunettes, c&apos;est le Professeur ! Un tueur à gages !</string>
+          <string language="24">El de las gafas es el profesor. Un asesino a sueldo...</string>
+          <string language="26">Quello con gli occhiali è il Professore. Un sicario a nolo...</string>
+          <string language="28">Тот тип в очках - Профессор. Наемный убийца...</string>
+          <string language="30">Ten v těch brýlích je Magistr, nájemný zabiják...</string>
+          <string language="32">Az a szemüveges a Professzor. Öljétek meg...</string>
+          <string language="42">那個戴眼鏡的是教授。職業謀殺者…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">trss_1617_885</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">1</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="ReplyList">
+      <struct id="0">
+        <uint32 label="Id">2147484055</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">Leo</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Jest ich więcej! Dostali się na górny dziedziniec!</string>
+          <string language="2">There&apos;s more of them! They&apos;ve entered the uppoer courtyard!</string>
+          <string language="6">There&apos;s more. They&apos;re entering the Upper Courtyard!</string>
+          <string language="10">Jest ich więcej! Dostali się na górny dziedziniec!</string>
+          <string language="20">Da sind noch mehr! Sie dringen in den oberen Innenhof ein!</string>
+          <string language="22">Il en arrive encore d&apos;autres dans la Haute cour !</string>
+          <string language="24">¡Hay más y han entrado en el patio superior!</string>
+          <string language="26">Ce ne sono altri... hanno sfondato il cortile superiore!</string>
+          <string language="28">Их больше. Они уже на верхнем дворе!</string>
+          <string language="30">Je jich tu víc! Pronikli i na horní nádvoří!</string>
+          <string language="32">Még többen jönnek, betörtek a felső udvarba!</string>
+          <string language="42">還有更多人，他們已經進入上面庭院了！</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">leoo_1617_2937</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">Leo</exostring>
+            <exostring label="EmotionalStateNa">angry</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">1</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="1">
+        <uint32 label="Id">2147484790</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">Triss</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">0</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Wyczuwam magię…Tam jest czarodziej.</string>
+          <string language="2">I sense magic. There&apos;s a sorcerer in there.</string>
+          <string language="6">I sense magic… There&apos;s a sorcerer among them.</string>
+          <string language="10">Wyczuwam magię... Tam musi być czarodziej.</string>
+          <string language="20">Ich spüre Magie ... sie haben einen Zauberer bei sich.</string>
+          <string language="22">Il y a de la magie dans l&apos;air... Ils ont un mage avec eux !</string>
+          <string language="24">Percibo magia... Les acompaña un hechicero.</string>
+          <string language="26">Avverto della magia... c&apos;è uno stregone fra loro.</string>
+          <string language="28">Я чувствую магию. Среди них есть чародей.</string>
+          <string language="30">Cítím magii... Mezi nimi je čaroděj.</string>
+          <string language="32">Varázserőt érzek... Egy varázsló van közöttük.</string>
+          <string language="42">我感覺到魔法…他們隊伍裡有一個術士。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">trss_1617_8748</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">Triss</exostring>
+            <exostring label="EmotionalStateNa">timid</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList"/>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="StartingList">
+      <struct id="0">
+        <resref label="Active"></resref>
+        <uint32 label="Index">0</uint32>
+      </struct>
+    </list>
+  </struct>
+</gff3>
