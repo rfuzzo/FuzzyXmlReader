@@ -48,13 +48,14 @@ namespace FuzzyXmlReader
             var filename = Path.GetFileNameWithoutExtension(infile);
             var fileDirectory = Path.GetDirectoryName(infile);
             var newDirectory = Path.Combine(fileDirectory, $"out/{filename}");
+            var ymlDirectory = Path.Combine(fileDirectory, $"out");
 
             if (!Directory.Exists(newDirectory))
                 Directory.CreateDirectory(newDirectory);
 
             string outfile = Path.Combine(newDirectory, $"{filename}_out.xml");
             string outfile_sections = Path.Combine(newDirectory, $"{filename}_sections.xml");
-            string outfile_yml = Path.Combine(newDirectory, $"{filename}.yml");
+            string outfile_yml = Path.Combine(ymlDirectory, $"{filename}.yml");
 
             #endregion 
 
@@ -62,8 +63,10 @@ namespace FuzzyXmlReader
 
             XDocument xml = gff3Writer.GenerateXML(parsedClass);
             XDocument xml_sections = gff3Writer.GenerateSectionsXML(xml);
-            xml.Save(outfile);
-            xml_sections.Save(outfile_sections);
+
+            //debug
+            //xml.Save(outfile);
+            //xml_sections.Save(outfile_sections);
 
             ymlWriter.Write(outfile_yml, xml_sections);
         }
