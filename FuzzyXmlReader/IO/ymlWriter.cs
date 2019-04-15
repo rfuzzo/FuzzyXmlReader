@@ -108,10 +108,6 @@ namespace FuzzyXmlReader.IO
                             iw.WriteLine();
                         }                        
                     }
-                    //   0           1      2   3   4    5         6             7               8            9                10             11           12          13       14
-                    //dialogset;cameraName;pos;rot;fov;zoom;dofFocusDistFar;dofBlurDistFar;dofIntensity;dofFocusDistNear;dofBlurDistNear;dofFfocalLength;dofDistance;dofPlane;dofTags;
-                    //dialogset_1_vs_1_around_npc;1_2_medium_ext;[-1.06,-1.18,1.70];[355.8,-0.0,332.6];20;2;2.5;5;1;1.69;28.2495;1.27007;Medium;[ext];
-
                     iw.WriteLine();
                     #endregion
                     // --------------------------------------------------------------------------------------
@@ -235,6 +231,7 @@ namespace FuzzyXmlReader.IO
 
                             if (el.Name == "CHOICE")
                             {
+                                iw.WriteLine("- CUE: shot_choice");
                                 iw.WriteLine("- CHOICE:");
                                 foreach (var choice in el.Elements())
                                 {
@@ -261,11 +258,11 @@ namespace FuzzyXmlReader.IO
                             else if (el.Name == "SCRIPT")
                             {
                                 iw.WriteLine($"- SCRIPT:");
-                                iw.Indent = 3;
-
-                                iw.WriteLine($"- function: {el.Attribute("function").Value}");
-                                iw.WriteLine($"- parameter:");
                                 iw.Indent = 4;
+
+                                iw.WriteLine($"function: {el.Attribute("function").Value}");
+                                iw.WriteLine($"parameter:");
+                                iw.Indent = 5;
                                 var param = el.Element("parameter");
                                 iw.WriteLine($"- factName: {param.Attribute("factName").Value}");
                                 iw.WriteLine($"- value: {param.Attribute("value").Value}");
