@@ -338,12 +338,6 @@ namespace FuzzyXmlReader.IO
             }
 
 
-            string snd = data.GetCommonObjectByName("Sound")?.Value?.ToString();
-            bool issound = !string.IsNullOrEmpty(snd);
-            if (issound)
-            {
-                ret.Add(new XAttribute("Sound", snd));
-            }
 
             return sdata;
         }
@@ -432,7 +426,7 @@ namespace FuzzyXmlReader.IO
                     {
                         item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
                     }
-                    else //FIXME is that even called?
+                    else
                     {
                         var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
                         last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));

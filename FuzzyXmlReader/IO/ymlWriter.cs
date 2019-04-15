@@ -25,7 +25,7 @@ namespace FuzzyXmlReader.IO
 
             using (StreamWriter sw = new StreamWriter(path))
             {
-                using (IndentedTextWriter iw = new IndentedTextWriter(sw))
+                using (IndentedTextWriter iw = new IndentedTextWriter(sw,"  "))
                 {
                     // Dialogscripts
                     #region Dialogscripts
