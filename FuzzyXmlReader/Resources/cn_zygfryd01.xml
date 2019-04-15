@@ -1,0 +1,2415 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<gff3 type="DLG">
+  <struct id="4294967295">
+    <uint32 label="DelayEntry">466</uint32>
+    <uint32 label="DelayReply">466</uint32>
+    <exostring label="OwnerID">cr_zygfr1_c1g1</exostring>
+    <exostring label="PlayerID"></exostring>
+    <resref label="EndConversation"></resref>
+    <resref label="EndConverAbort"></resref>
+    <byte label="PreventZoomIn">0</byte>
+    <char label="bStartEffect">1</char>
+    <char label="bEndEffect">1</char>
+    <char label="ForceInteractive">0</char>
+    <list label="SpeakerList"/>
+    <list label="FlagList">
+      <struct id="0">
+        <exostring label="FlagName">_cn_zygfryd01_nonmet</exostring>
+      </struct>
+    </list>
+    <list label="EntryList">
+      <struct id="0">
+        <uint32 label="Id">2147482200</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Niech spoczywa w pokoju.</string>
+          <string language="2">May he rest in peace.</string>
+          <string language="4">May he rest in peace.</string>
+          <string language="6">May he rest in peace.</string>
+          <string language="10">Niech spoczywa w pokoju.</string>
+          <string language="20">Möge er in Frieden ruhen.</string>
+          <string language="22">Qu&apos;il repose en paix !</string>
+          <string language="24">Descanse en paz.</string>
+          <string language="26">Che riposi in pace.</string>
+          <string language="28">Да почиет он в мире.</string>
+          <string language="30">Nechť odpočívá v pokoji...</string>
+          <string language="32">Nyugodjék békében.</string>
+          <string language="42">希望他能安息。</string>
+        </locstring>
+        <resref label="Script">cocat_s_1</resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3199</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">sad</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">17</uint32>
+            <byte label="IsChild">1</byte>
+            <uint32 label="Id">4294967295</uint32>
+            <exostring label="LinkComment"></exostring>
+            <byte label="IsMultilink">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="1">
+        <uint32 label="Id">1</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment">Zygfryd rycerz Zakonu Płonącej Róży, żyje ideałami- taki trochę błędny rycerz. Szczerze wierzy w dobre intencje zakonu nie analizując ich zbytnio. Rozmowa w kanałach</exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Co ty tu... Ach, wiedźmin...</string>
+          <string language="2">What are you... Ah, a witcher...</string>
+          <string language="4">What sort of being are you? Oh, a witcher...</string>
+          <string language="6">Oh, you&apos;re a witcher...?</string>
+          <string language="10">Co ty tu... Ach, wiedźmin...</string>
+          <string language="20">Oh, Ihr seid ein Hexer ...?</string>
+          <string language="22">Oh, un sorceleur ?</string>
+          <string language="24">Oh, ¿eres brujo?</string>
+          <string language="26">Oh, sei un witcher?</string>
+          <string language="28">Что ты за существо? А, ведьмак...</string>
+          <string language="30">Co ty tu... Á, zaklínač.</string>
+          <string language="32">Ó, te witcher vagy... ?</string>
+          <string language="42">噢，你是狩魔獵人…？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_753</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList">
+          <struct id="0">
+            <exostring label="FlagName">_cn_zygfryd01_nonmet</exostring>
+            <sint32 label="FlagValue">0</sint32>
+          </struct>
+        </list>
+        <list label="FlagsAfterList">
+          <struct id="0">
+            <exostring label="FlagName">_cn_zygfryd01_nonmet</exostring>
+            <sint32 label="FlagValue">1</sint32>
+          </struct>
+        </list>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">1</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context">Zygfryd, member of the Order of the Burning Rose, talking with the witcher in the sewers before joining him in the quest to kill cockatrice.</exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="2">
+        <uint32 label="Id">2146882678</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">To proste - bestia zagraża Wyzimie i trzeba ją usunąć. Zakon od dawna tępi potwory. Z bardzo dobrym skutkiem.</string>
+          <string language="2">It&apos;s simple. The beast threatens Vizima and needs to be eradicated. The Order has been combating monsters for long. Very effectively, I must say.</string>
+          <string language="4">The beast threatens Vizima and must be destroyed. The Order has been fighting beasts for a long time. Rather effectively, I&apos;d say.</string>
+          <string language="6">It threatens Vizima. The Order&apos;s been fighting beasts for a while. Rather effectively, too.</string>
+          <string language="10">To proste - Bestia zagraża Wyzimie i trzeba ją usunąć. Zakon od dawna tępi potwory. Z bardzo dobrym skutkiem.</string>
+          <string language="20">Sie bedroht Wyzima. Der Orden kämpft schon seit langer Zeit gegen Bestien. Und zwar recht wirkungsvoll.</string>
+          <string language="22">Elle menace Wyzima ! L&apos;Ordre combat les bêtes depuis longtemps. Avec une certaine efficacité !</string>
+          <string language="24">Amenaza Wyzima. La Orden lleva tiempo luchando contra las bestias. Con mucha eficacia, por cierto.</string>
+          <string language="26">Minaccia Vizima. L&apos;Ordine ha sempre combattuto contro le bestie... e con ottimi risultati.</string>
+          <string language="28">Эта тварь угрожает городу и потому должна быть уничтожена. Орден уже давно сражается с чудовищами. И довольно успешно, я бы сказал.</string>
+          <string language="30">To je prosté, ohrožuje Wyzimu a je třeba ji zabít. Řád bojuje s nestvůrami odedávna. A úspěšně, musím říct.</string>
+          <string language="32">Mert fenyegeti Vizimát. A Rend harcol szörnyek ellen egy ideje. Egész hatékonyan.</string>
+          <string language="42">牠威脅維吉瑪，騎士團已經和怪物作戰一段時間，也相當有效率。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3187</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">2</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="3">
+        <uint32 label="Id">2146882703</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A zatem prowadź, wiedźminie.</string>
+          <string language="2">You lead, witcher.</string>
+          <string language="4">You lead, witcher.</string>
+          <string language="6">You lead.</string>
+          <string language="10">Zatem prowadź, wiedźminie.</string>
+          <string language="20">Ihr geht voran.</string>
+          <string language="22">Passez devant !</string>
+          <string language="24">Tú primero.</string>
+          <string language="26">Fa&apos; strada.</string>
+          <string language="28">Веди, ведьмак.</string>
+          <string language="30">Až po tobě, zaklínači.</string>
+          <string language="32">Te mész előre.</string>
+          <string language="42">你帶路。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3198</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList"/>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="4">
+        <uint32 label="Id">2146882694</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Nie chcę się kłócić. Skoro jesteśmy tu obaj, nie ma sensu ustawiać się w kolejce do potwora, szczególnie, że w kanałach jest też sporo utopców. Co powiesz na połączenie sił? Chętnie przyjrzę się twoim technikom walki i zaręczam, że nie noszę miecza od parady.</string>
+          <string language="2">I don&apos;t want to argue. Since we&apos;re both here, there&apos;s no point standing in line for one&apos;s turn, especially since there are many drowners in the sewers as well. How about joining forces? I&apos;d love to see your combat techniques and I assure you my sword will also be to some avail.</string>
+          <string language="4">I&apos;ve no desire to argue. We&apos;re both here. There&apos;s no reason to await one&apos;s turn, especially while there&apos;s drowners here too. Let&apos;s join forces instead. I long to see your combat skills and I assure you my sword is at your disposal.</string>
+          <string language="6">I&apos;ve no desire to argue. We&apos;re both here. There&apos;s no reason to await the other&apos;s turn, especially while there are drowners here too. Let&apos;s join forces instead. I long to see your combat skills and I assure you my sword is at your disposal.</string>
+          <string language="10">Nie chcę się kłócić. Skoro jesteśmy tu obaj, nie ma sensu ustawiać się w kolejce do potwora, szczególnie, że w kanałach jest też sporo utopców. Co powiesz na połączenie sił? Chętnie przyjrzę się twoim technikom walki i zaręczam, że nie noszę miecza od parady.</string>
+          <string language="20">Ich will mich nicht streiten. Wir sind beide hier. Kein Grund zu warten, bis man an der Reihe ist, zumal hier auch Ertrunkene lauern. Verbünden wir uns stattdessen. Ich würde gern Eure Kampfesfertigkeiten sehen und versichere Euch, dass Euch mein Schwert zur Verfügung steht.</string>
+          <string language="22">Je ne désire pas me quereller. Nous sommes ici tous deux. Nul besoin de chercher à nous brûler la politesse, d&apos;autant que les noyeurs abondent ! Travaillons ensemble ! J&apos;ai hâte de vous voir en action et je mets mon glaive à votre disposition.</string>
+          <string language="24">No quiero discutir. Ya que hemos venido los dos, no tiene sentido que actuemos por turnos, sobre todo porque también hay sumergidos. Colaboraremos. Tengo ganas de verte en acción y te aseguro que mi espada está a tu servicio.</string>
+          <string language="26">Non ho voglia di discutere. Siamo entrambi qui... non c&apos;è ragione di fare i turni, soprattutto visto che ci sono anche dei drowner qui sotto. Uniamo le nostre forze. Non vedo l&apos;ora di assistere in prima persona alla tua abilità in combattimento, e sta&apos; certo che la mia spada è a tua disposizione.</string>
+          <string language="28">У меня нет желания спорить. Мы оба здесь. Нет смысла ждать своей очереди, особенно если учесть, что утопцы тоже здесь. Давай объединим силы. Я жажду увидеть твои боевые навыки в действии, и уверяю тебя, меч ношу не для красоты.</string>
+          <string language="30">Nehodlám se s tebou přít. Jsme tu oba dva a nemá cenu mezi sebou soupeřit, zvlášť, když jsou tam dole utopenci. Radši tam pojďme spolu. Aspoň se něčemu přiučím - ujišťuji tě, že ten meč nemám pro parádu.</string>
+          <string language="32">Nem akarok vitatkozni. Mindketten itt vagyunk. Semmi értelme egyikünk lépésére várni, amíg fojtólidércek is vannak itt. Inkább egyesítsük harci erőinket. Régóta szeretném már látni harci képességeidet, és biztosíthatlak, hogy a kardom rendelkezésedre áll.</string>
+          <string language="42">我不想爭論。我們都在這裡。沒有道理要等另一個人先行動，特別是還有水鬼在這裡。我們一起行動吧。我很想見識你的作戰能力，我也很願意提供我的協助。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3188</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">3</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+          <struct id="1">
+            <resref label="Active"></resref>
+            <uint32 label="Index">0</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="5">
+        <uint32 label="Id">2146882684</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Mówiąc otwarcie jesteście reliktami. Ilu wiedźminów jeszcze żyje? Kilku? Góra kilkunastu. Nie stanowicie konkurencji. Poza tym Zakon nie każe sobie płacić za ratowanie ludzi od niebezpieczeństwa.</string>
+          <string language="2">Candidly speaking, you are relics of the past. How many witcher are left? A few? A dozen tops. You&apos;re not competition. Besides, the Order expects no payment for protecting humans from danger.</string>
+          <string language="4">Quite honestly, you witchers are relics. How many of you are there? A few? A dozen? You&apos;re no competition. And the Order demands no payment for protecting humans from danger.</string>
+          <string language="6">You witchers are relics and few in number. You&apos;re no competition - the Order demands no payment for protecting humans.</string>
+          <string language="10">Mówiąc otwarcie jesteście reliktami. Ilu wiedźminów jeszcze żyje? Kilku? Góra kilkunastu. Nie stanowicie konkurencji. Poza tym Zakon nie każe sobie płacić za ratowanie ludzi od niebezpieczeństwa.</string>
+          <string language="20">Ihr Hexer seid Relikte, im Aussterben begriffen. Ihr seid keine Konkurrenz - der Orden verlangt nichts dafür, dass er Menschen beschützt.</string>
+          <string language="22">Vous autres sorceleurs êtes des reliques du passé. Vous n&apos;êtes pas de taille à concurrencer l&apos;Ordre qui offre sa protection gratuitement.</string>
+          <string language="24">Los brujos estáis obsoletos y quedáis pocos. No sois rivales. Y la Orden no exige dinero por proteger a los humanos.</string>
+          <string language="26">Voi witcher siete delle reliquie del passato in via d&apos;estinzione. Non potete competere. Inoltre l&apos;Ordine non chiede alcun pagamento per proteggere gli umani.</string>
+          <string language="28">Честно говоря, вы, ведьмаки, - реликт. Сколько вас осталось? Пара? Дюжина? Вы нам не конкуренты. К тому же Орден не взимает платы за то, что защищает людей от опасности.</string>
+          <string language="30">Vy zaklínači jste přežitkem a je vás málo. A nemůžete konkurovat - Řád za ochranu lidí nechce žádné peníze.</string>
+          <string language="32">A witcherek már elavultak, és kevés van belőlük. Nem versenyezhetsz velünk - a Rend nem követel fizetséget az emberek védelméért.</string>
+          <string language="42">你們狩魔獵人是遺產，而且數量很少。你們沒有競爭力 - 騎士團保護人類且不求報酬。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3184</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">4</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="6">
+        <uint32 label="Id">2147428754</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Domyślasz się, że skończyło się to tragicznie.</string>
+          <string language="2">I&apos;m sure you can imagine, he met a tragic end.</string>
+          <string language="4">As you can surmise, he met a tragic end.</string>
+          <string language="6">As you can surmise, he met a tragic end.</string>
+          <string language="10">Domyślasz się, że skończyło się to tragicznie.</string>
+          <string language="20">Wie Ihr Euch vorstellen könnt, fand er ein tragisches Ende.</string>
+          <string language="22">Comme vous pouvez l&apos;imaginer, il périt tragiquement !</string>
+          <string language="24">Como supondrás, su final fue trágico.</string>
+          <string language="26">Come puoi immaginare, fece una tragica fine...</string>
+          <string language="28">Как ты понимаешь, там он и встретил свою трагическую кончину.</string>
+          <string language="30">Jak je ti určitě jasné, skončilo to tragicky.</string>
+          <string language="32">Gondolom el tudod képzelni, tragikus vége lett.</string>
+          <string language="42">就像你所猜測的，他遭遇了悽慘的結局。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3201</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">7</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="7">
+        <uint32 label="Id">2147428764</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Kiedy dotarłem na miejsce, poczwara konała w straszliwych męczarniach. Połknęła staruszka, niemal w całości, nie mogąc wydłubać go ze zbroi. Później mówili, że święty płomień gorejący w duszy Eycka spalił serce potwora.</string>
+          <string language="2">When I reached the site of their struggle, the monster was in terrible pain, dying. Unable to pick my father out of his armor, it had swallowed the old man almost whole. Later they said the sacred fire burning in Eyck&apos;s soul burnt the monster&apos;s heart.</string>
+          <string language="4">When I reached the site of their struggle, the monster was in horrible pain, seconds from dying. When it could not dislodge my father from his armor, it nearly swallowed the old man whole. Later they would say the sacred fire in Eyck&apos;s soul burnt the monster&apos;s heart.</string>
+          <string language="6">When I reached the site of their struggle, the monster was in horrible pain, seconds from dying. When it could not dislodge my father from his armor, it nearly swallowed the old man whole. Later they would say the sacred fire in Eyck&apos;s soul burnt the monster&apos;s heart.</string>
+          <string language="10">Kiedy dotarłem na miejsce, poczwara konała w straszliwych męczarniach. Połknęła staruszka, niemal w całości, nie mogąc wydłubać go ze zbroi. Później mówili, że Święty Płomień, gorejący w duszy Eycka, spalił serce potwora.</string>
+          <string language="20">Als ich zum Ort des Kampfes kam, litt das Ungeheuer schreckliche Schmerzen und war nur Augenblicke vom Tode entfernt. Da es meinen Vater nicht aus der Rüstung schälen konnte, verschlang es ihn fast am Stück. Später hieß es, das heilige Feuer in Eycks Seele hätte das Herz des Ungeheuers verbrannt.</string>
+          <string language="22">Lorsque j&apos;arrivai sur le lieu de leur affrontement, le monstre agonisait dans d&apos;atroces souffrances. Frustré de ne pouvoir déloger mon père de son armure, il l&apos;avait presque englouti entier. Plus tard, les gens ont raconté que le feu sacré de l&apos;âme d&apos;Eyck avait brûlé le coeur du monstre.</string>
+          <string language="24">Cuando llegué al escenario de su lucha, el monstruo sufría horribles dolores y estaba a punto de morir. No pudo quitarle la armadura a mi padre e intentó tragárselo entero. Luego se dijo que el fuego sagrado del alma de Eyck quemó el corazón del monstruo.</string>
+          <string language="26">Quando arrivai sul luogo dello scontro, il mostro stava soffrendo terribilmente ed era prossimo alla morte... non riuscendo a estrarre mio padre dall&apos;armatura, l&apos;aveva inghiottito tutto intero. In seguito, si disse che il sacro fuoco dell&apos;animo di Eyck aveva bruciato il cuore della bestia.</string>
+          <string language="28">Когда я добрался до места их боя, чудище мучилось от ужасной боли и было при смерти. Мантикора не смогла извлечь моего отца из его доспеха и проглотила практически целиком. Потом уже начали говорить, что священный пламень души Эйка сжег сердце зверя.</string>
+          <string language="30">Když jsem dorazil na místo neštěstí, stvůra se už svíjela bolestí a mlela z posledního. Když nemohla uvolnit otcovo brnění, spolkla toho staříka téměř celého. Časem se začalo říkat, že svatý oheň v Eyckově duši spálil té nestvůře srdce.</string>
+          <string language="32">Amikor odaértem a küzdelmük helyszínéhez, a szörny hatalmas fájdalommal ordított, és másodpercekre volt a haláltól. Amikor látta, hogy nem képes kiütni apámat a fegyverzetéből, megpróbálta egészben lenyelni az öreget. Később azt mondták, Eyck lelkének szent tüze égette ki a szörny szívét.</string>
+          <string language="42">當我到達他們戰鬥的地方，那怪物正在極大的痛楚中，即將死亡。雖然牠不能把我父親從盔甲中分離，但牠幾乎把他整個吞下去了。後來有人說，我父親靈魂中的神聖之火把那隻怪物的心臟燒毀了。</string>
+        </locstring>
+        <resref label="Script">cocat_w_1</resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3203</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">6</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="8">
+        <uint32 label="Id">2147428635</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Niedokłanie, byłem wówczas poza domem. Kiedy wróciłem, dowiedziałem się, że ojciec, mimo iż kaleki, postanowił walczyć z potworem. Kazał się przywiązać do konia, i z modlitwą na ustach ruszył do szarży.</string>
+          <string language="2">Not quite, I wasn&apos;t at home at that time. When I returned, I learned my father, despite being a cripple, decided to fight the monster. He asked to be tied to a horse and with a prayer on his lips he charged the beast.</string>
+          <string language="4">No, I wasn&apos;t home at the time. When I returned, I discovered my father, despite his infirmity, had decided to fight the manticore. He asked to be tied to a horse and with a prayer, he charged the beast.</string>
+          <string language="6">No, I wasn&apos;t at home at the time. When I returned, I discovered my father, despite his infirmity, had decided to fight the manticore. He asked to be tied to a horse and with a prayer, he charged the beast.</string>
+          <string language="10">Niedokładnie, byłem wówczas poza domem. Kiedy wróciłem, dowiedziałem się, że ojciec, mimo iż kaleki, postanowił walczyć z potworem. Kazał się przywiązać do konia i z modlitwą na ustach ruszył do szarży.</string>
+          <string language="20">Nein, da war ich nicht zu Hause. Später fand ich heraus, dass mein Vater trotz seiner Gebrechlichkeit gegen die Mantikora gekämpft hatte. Er verlangte, auf ein Pferd gebunden zu werden und trat, ein Gebet auf den Lippen, gegen die Bestie an.</string>
+          <string language="22">Non, je n&apos;étais pas avec lui... En rentrant, j&apos;ai découvert que, faisant fi de son infirmité, mon père avait combattu la manticore.</string>
+          <string language="24">No, no estaba en casa. Más tarde descubrí que mi padre, pese a su dolencia, había luchado con la mantícora.</string>
+          <string language="26">No, a quei tempi non ero a casa. Più tardi scoprii che mio padre, nonostante la sua infermità, aveva affrontato la manticora.</string>
+          <string language="28">Нет, я был в то время в отлучке. Когда я вернулся, то узнал, что мой отец, несмотря на увечье, решил сразиться с мантикорой. Он попросил привязать его к коню, а затем с молитвой на устах атаковал чудовище.</string>
+          <string language="30">Ne, nebyl jsem tenkrát doma. Teprve až později jsem zjistil, že můj otec s mantikorou, i přes svou chorobu, bojoval.</string>
+          <string language="32">Nem. Akkor nem voltam otthon. Később fedeztem fel, hogy az apám gyengesége ellenére harcolt a mantikórral.</string>
+          <string language="42">不，我那時候不在家。當我回家的時候，發現我的父親雖然年老體衰，仍然決定與那隻飛獅怪作戰。他一邊祈禱一邊騎上馬，然後向那怪物衝鋒而去。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3191</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">5</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="9">
+        <uint32 label="Id">2146882761</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Muszę przyznać, że moja wiedza o potworach kończy się na kuroliszku, grawiura opisująca tę bestię jest jedyną, jaka zachowała się, po moim świętej pamięci ojcu, Eycku z Danesle. Posiadał ich znacznie więcej, ale przepadły w brzuchu mantikory. Rycina skoffina okazała się odporna na trawienie.</string>
+          <string language="2">I must admit my knowledge of monsters ends with the cockatrice, an engraving describing the beast is the only one left after my late father, Eyck of Danesle, may he rest in peace. He had many more but they were lost in a manticore&apos;s stomach. The skoffin&apos;s image proved digestion-resistant.</string>
+          <string language="4">I confess my knowledge of monsters ends with the cockatrice. My late father, Eyck of Danesle, may he rest in peace, left me an engraving of the beast. There were many more engravings but they were lost inside a manticore&apos;s stomach. Only the skoffin&apos;s image survived.</string>
+          <string language="6">I confess my knowledge of monsters ends with the cockatrice. My late father, Eyck of Denesle, may he rest in peace, left me an engraving of the beast. There were many more engravings but they were lost inside a manticore&apos;s stomach. Only the cockatrice&apos;s image survived.</string>
+          <string language="10">Muszę przyznać, że moja wiedza o potworach kończy się na kuroliszku, grawiura opisująca tę bestię jest jedyną, jaka zachowała się po moim świętej pamięci ojcu, Eycku z Denesle. Posiadał ich znacznie więcej, ale przepadły w brzuchu mantikory. Rycina kuroliszka okazała się odporna na trawienie.</string>
+          <string language="20">Leider beschränkt sich mein Wissen über Ungeheuer auf die Gorgo. Eyck von Denesle, mein verstorbener Vater - er möge in Frieden ruhen - hinterließ mir einen Stahlstich der Bestie. Es gab noch viele weitere Stiche, aber die verschwanden im Magen einer Mantikora. Nur das Bild der Gorgo überlebte.</string>
+          <string language="22">Je dois avouer que ma connaissance des monstres se limite au cocatrix. Feu mon père, Eyck de Denesle, qu&apos;il repose en paix, m&apos;a légué une gravure de la bête. Il avait d&apos;autres gravures qui, malheureusement, ont fini dans l&apos;estomac d&apos;une manticore. Seule a survécu l&apos;image du &quot;skoffin&quot;.</string>
+          <string language="24">Confieso que mi conocimiento de los monstruos acaba con el gallotriz. Mi difunto padre, Eyck de Danesle, descanse en paz, me dejó un grabado de la bestia. Había muchos más grabados pero acabaron en el estómago de una mantícora. Solo sobrevivió la imagen del skoffin.</string>
+          <string language="26">Lo confesso, la mia conoscenza dei mostri si ferma alla cockatrice. Il mio defunto padre, Eyck dei Denesle... che riposi in pace... mi ha lasciato una statuetta della bestia. C&apos;erano molte altre statuette, ma sono andate perdute nello stomaco di una manticora... è sopravvissuta soltanto quella dello skoffin.</string>
+          <string language="28">Признаюсь, что мои познания о чудовищах ограничиваются кокатриксами. Мой покойный отец, Эйк из Денесле, да упокоится он с миром, оставил мне гравюру с этим зверем. Было еще много гравюр, но все они погибли в животе у мантикоры. Сохранился только образ скоффина.</string>
+          <string language="30">Přiznávám, že má znalost monster končí kuroliškem. Eyck z Dansele, můj zesnulý otec - nechť odpočívá v pokoji - mi zanechal rytinu této stvůry. Bylo jich původně víc, ale všechny skončily v žaludku mantikory. Zbyl jen obrázek kuroliška.</string>
+          <string language="32">Bevallom, a szörnyekről való tudásom a kukorixoknál véget ér. Néhai apám, Deneslei Eyck, nyugodjon békében, rám hagyott egy metszetet a bestiáról. Több másik metszet is volt, de egy mantikór gyomrában végezték. Csak a kukorix képe maradt meg bennem.</string>
+          <string language="42">我必須承認我對於怪物的知識僅止於此。我過世的父親丹索的艾克，希望他安息，留給我牠的資料。還有其他的資料，不過被飛獅怪吃掉了。只有石化雞蛇的資料留下來。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3193</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">8</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="10">
+        <uint32 label="Id">2146882755</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Chociaż oczy bestii nie zmieniają w kamień, są bardzo cennym i uniwersalnym komponentem. Słyszałem, że jeszcze cenniejsze są lotki z ogona bestii.</string>
+          <string language="2">Though its eyes can&apos;t turn people into stone, they&apos;re a very precious and versatile component. I heard feathers from the beast&apos;s tail are even more valuable.</string>
+          <string language="4">Though its eyes won&apos;t turn people to stone, they&apos;re quite a versatile component -- and precious. I&apos;ve heard its tail feathers are even more valuable.</string>
+          <string language="6">Its eyes are quite a versatile component -- and precious. Its tail feathers are even more valuable.</string>
+          <string language="10">Chociaż oczy bestii nie zmieniają w kamień, są bardzo cennym i uniwersalnym komponentem. Słyszałem, że jeszcze cenniejsze są lotki z ogona bestii.</string>
+          <string language="20">Ihre Augen sind eine vielseitige Zutat - und kostbar. Ihre Schwanzfedern sollen noch wertvoller sein.</string>
+          <string language="22">Ses yeux sont un composant polyvalent... et précieux. Et la valeur des plumes de sa queue est encore plus grande.</string>
+          <string language="24">Sus ojos son un ingrediente versátil... y precioso. Las plumas de su cola son incluso más valiosas.</string>
+          <string language="26">Gli occhi sono un ingrediente piuttosto versatile... e prezioso. Anche le piume della coda valgono parecchio.</string>
+          <string language="28">Хотя его глаза и не могут превращать людей в камень, они довольно универсальный компонент - и очень дорогой. Я слыхал, что перья с его хвоста еще дороже.</string>
+          <string language="30">Kuroliškovy oči mají mnohé využití a jsou velmi cenné. Mnohem cennější ale bývá peří vytrhané z jeho chvostu.</string>
+          <string language="32">A szemeit elég sokféleképpen lehet hasznosítani - ezért értékesek is. A farktollai pedig még inkább.</string>
+          <string language="42">牠的眼睛是相當好用的材料，而且非常珍貴。牠尾巴的羽毛更是有價值。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3192</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty_int</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">9</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="11">
+        <uint32 label="Id">2146882749</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Należy uważać na tyły: kuroliszek potrafi zakraść się bezszelestnie i zdradziecko zaatakować plecy. Bez srebrnego miecza walka jest o wiele trudniejsza. Co więcej...? Trzeba dobrze robić tym mieczem. Skoffin jest wymagającym przeciwnikiem.</string>
+          <string language="2">Watch your back: the cockatrice can move silently and deceitfully attack from behind. The fight is much more difficult without a silver sword. What else? You need to be good with the sword. The skoffin is a demanding opponent.</string>
+          <string language="4">The skoffin is a demanding opponent. You&apos;ll need to excel at swordsmanship. If you lack a silver sword, it&apos;ll be even more difficult. As always, watch your back. A cockatrice likes to sneak up from behind and attack.</string>
+          <string language="6">You&apos;ll need to excel at swordsmanship. Without a silver sword, it&apos;ll be more difficult. A cockatrice likes to sneak up from behind and attack.</string>
+          <string language="10">Należy uważać na tyły: kuroliszek potrafi zakraść się bezszelestnie i zdradziecko zaatakować plecy. Bez srebrnego miecza walka jest o wiele trudniejsza. Co więcej...? Trzeba dobrze machać tym mieczem. Skoffin jest wymagającym przeciwnikiem.</string>
+          <string language="20">Man muss ein exzellenter Schwertmeister sein. Ohne Silberschwert dürfte es noch schwieriger werden. Eine Gorgo schleicht sich gern von hinten an.</string>
+          <string language="22">Il faut exceller dans le maniement du glaive. Sans glaive en argent, la difficulté est encore accrue. Le cocatrix aime se faufiler dans votre dos pour vous attaquer.</string>
+          <string language="24">Tendrás que destacar con la espada. Sin una espada de plata, será más difícil. A los gallotrices les gusta atacar por la espalda.</string>
+          <string language="26">Avrai bisogno di una grande maestria con la spada. Senza una spada d&apos;argento, sarà difficile. Le cockatrici adorano tendere agguati alle vittime e attaccarle alle spalle.</string>
+          <string language="28">Кокатрикс - это опасный противник. Тебе нужно быть отличным мечником. Если у тебя нет серебряного меча, дело становится еще тяжелее. Что еще...? Как всегда, нужно быть настороже - скоффин любит нападать сзади.</string>
+          <string language="30">Kurolišek se rád plíží a nečekaně útočí zezadu. Bez stříbrného meče je jeho zabití spíše otázkou štěstí. Výborné zacházení se zbraní je podmínkou úspěchu.</string>
+          <string language="32">Kardforgatásban kell kitűnőnek lenned. Azonban ezüstkard nélkül ez elég nehéz lesz. A kukorix szeret az ellenfele mögé lopózni és úgy támadni.</string>
+          <string language="42">你的劍術必須相當好。假如沒有銀製的劍，難度會更高。石化雞蛇喜歡從後面偷襲。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3194</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">10</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="12">
+        <uint32 label="Id">2146882743</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Kuroliszek jest często mylony z bazyliszkiem - to dwa odrębne gatunki, podobne tylko z nazwy. Wbrew obiegowej opinii kuroliszek nie zamienia w kamień spojrzeniem, należy za to wystrzegać się jego dzioba. Atak dziobem z zabójczą precyzją trafia w witalne narządy i zabija natychmiast, szczególnie jeśli bestia ma szansę zajść ofiarę od tyłu.</string>
+          <string language="2">The cockatrice is frequently mistaken for a basilisk - but they&apos;re two separate species. Contrary to common beliefs, the cockatrice&apos;s gaze does not turn people into stone, but one should beware of its beak. The monster is surgically precise in attacking its opponents&apos; vital organs with its beak, usually making an immediate kill, particularly if the beast manages to attack its victim from behind.</string>
+          <string language="4">The cockatrice is frequently mistaken for a basilisk - but they&apos;re two separate species. Contrary to common belief, the cockatrice&apos;s gaze does not turn people to stone, but one should beware of its beak. The monster&apos;s beak is apt to tear its opponents&apos; vital organs out with surgical precision. Often, the victim is slain immediately, especially when taken from behind.</string>
+          <string language="6">The cockatrice is frequently mistaken for a basilisk - but they&apos;re two separate species. Contrary to common belief, the cockatrice&apos;s gaze does not turn people to stone, but one should beware of its beak. The monster&apos;s beak is apt to tear its opponents&apos; vital organs out with surgical precision. Often, the victim is slain immediately, especially when taken from behind.</string>
+          <string language="10">Kuroliszek jest często mylony z bazyliszkiem - to dwa odrębne gatunki, podobne tylko z nazwy. Wbrew obiegowej opinii nie zamienia w kamień spojrzeniem, należy za to wystrzegać się jego dzioba. Atakując trafia w witalne narządy z zabójczą precyzją. Szczególnie, jeśli bestia ma szansę zajść ofiarę od tyłu.</string>
+          <string language="20">Die Gorgo wird nicht selten mit dem Basilisken verwechselt - aber es sind zwei verschiedene Gattungen. Die Gorgo verwandelt Menschen nicht in Stein, wie der Volksglaube behauptet. Allerdings sollte man sich vor ihrem Schnabel hüten. Der Schnabel des Ungeheuers kann die lebenswichtigen Organe seines Gegners präzise wie ein Chirurg entfernen. Nicht selten kommt das Opfer auf der Stelle zu Tode, besonders wenn es von hinten angefallen wird.</string>
+          <string language="22">Le cocatrix est souvent confondu avec le basilic alors qu&apos;il s&apos;agit de deux espèces distinctes. Contrairement à la croyance populaire, le regard du cocatrix ne pétrifie pas sa proie, mais il faut se méfier de son bec. Celui-ci peut arracher les organes vitaux de sa proie avec une précision chirurgicale. Souvent, la proie meurt sur le coup, surtout si elle est attaquée par derrière.</string>
+          <string language="24">Se suele confundir al gallotriz con el basilisco, pero son dos especies distintas. Pese a lo que cree la gente, la mirada del gallotriz no transforma en piedra a la gente, pero hay que evitar su pico. El pico del monstruo es capaz de desgarrar los órganos vitales de sus enemigos con precisión quirúrgica. La víctima suele morir en el acto, sobre todo si es atacada por la espalda.</string>
+          <string language="26">Le cockatrici vengono spesso scambiate per basilischi... ma sono due specie ben distinte. Contrariamente a quanto si crede, lo sguardo di una cockatrice non tramuta la gente in pietra, ma bisogna comunque fare attenzione al suo becco, con il quale può colpire con precisione chirurgica gli organi vitali degli avversari. Spesso, la vittima muore sul colpo, soprattutto quando viene sorpresa alle spalle.</string>
+          <string language="28">Кокатриксов часто путают с василисками, но это два разных вида. Вопреки общепринятому убеждению взгляд кокатрикса не превращает людей в камень, но нужно бояться его клюва. Этим клювом он может разрывать жизненно важные органы врага с точностью хирурга.</string>
+          <string language="30">Kurolišek je často zaměňován za baziliška, ale jedná se o dva odlišné druhy. Navzdory všeobecnému mínění nezmění kuroliškův pohled oběť v kámen, ale jeho zobák je smrtící. Dokáže jím rozpárat protivníkovy životně důležité orgány s téměř chirurgickou přesností. Smrt oběti bývá rychlá, zvláště při útoku zezadu.</string>
+          <string language="32">A kukorixokat gyakran összetévesztik a baziliszkuszokkal - pedig ez két külön faj. A közhiedelemmel ellentétben a kukorixok tekintete nem változtatja az embereket kővé, de a csőrüktől óvakodni kell. A bestia csőre sebészi pontossággal képes kitépni az ellenfél létfontosságú szerveit. Az áldozat gyakran azonnal meghal, főleg amikor hátulról kapják el.</string>
+          <string language="42">很多人常常把石化雞蛇和石化蜥蜴搞混--但是牠們是不同類的。不像一般人所認為的，石化雞蛇的目光並不會把人變成石頭，但你得要小心牠的喙。牠的鳥喙可以把獵物的重要器官用醫生般的精準度輕鬆扯出來。受害的人通常是立刻死亡，特別是從後面被攻擊的人。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3195</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">11</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="13">
+        <uint32 label="Id">2146882712</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Kuroliszek, nazywany skoffinem zalicza się do ornitoreptyli. Jest ogniwem pośrednim między gadami a ptakami. Masywny, dwukrotnie większy od dużego ptaka, przypomina nieco koguta, stąd jego potoczna nazwa...</string>
+          <string language="2">Cockatrices, also called &quot;skoffins,&quot; are a kind of ornithosaur. They&apos;re a link between reptiles and birds. Enormous, twice the size of a large bird, they resemble roosters, hence their common name…</string>
+          <string language="4">Cockatrices, also called &quot;skoffins,&quot; are a kind of ornithosaur. They&apos;re enormous, twice the size of a large bird. The link between reptiles and birds, they resemble roosters, hence their common name…</string>
+          <string language="6">Cockatrices, also known as skoffins, are a kind of ornithosaur. They&apos;re twice the size of a large bird. The link between reptiles and birds, they resemble roosters, hence their common name…</string>
+          <string language="10">Kuroliszek, nazywany skoffinem, zalicza się do ornitoreptyli. Jest ogniwem pośrednim między gadami a ptakami. Masywny, dwukrotnie większy od dużego ptaka. Przypomina nieco koguta, stąd jego potoczna nazwa...</string>
+          <string language="20">Gorgonen sind eine Art von Ornithosaurus. Sie sind riesig groß. Sie sind das Bindeglied zwischen Reptilien und Vögeln und haben Ähnlichkeit mit Hähnen - daher ihr landläufiger Name ...</string>
+          <string language="22">Le cocatrix, ou skoffin, appartient à la famille des ornithosaures. Il fait deux fois la taille d&apos;un grand oiseau et ressemble à un coq, d&apos;où son nom...</string>
+          <string language="24">Los gallotrices son una especie de ornitosaurio. Son el doble de un pájaro grande. Parecen gallos, de ahí su nombre común...</string>
+          <string language="26">La cockatrici sono una specie di ornitosauro. Sono circa il doppio della taglia di un grosso volatile... assomigliano ai galli, e da questo deriva il loro nome.</string>
+          <string language="28">Кокатриксы, также известные как &apos;скоффины&apos; - это вид орнитозавров. Они огромны, в два раза больше обычной крупной птицы. Будучи связующим звеном между рептилией и птицей, они напоминают петухов, откуда их народное наименование...</string>
+          <string language="30">Kurolišci jsou druhem ornitosaura. Jejich velikost dosahuje až dvojnásobku těla velkého ptáka. Připomínají kohouty a odtud pochází i jejich jméno...</string>
+          <string language="32">A kukorixok egyfajta ornitoszauruszok. Kétszer akkorák, mint egy nagy madár. Kakasra hasonlítanak, innen a nevük is...</string>
+          <string language="42">石化雞蛇是一種鳥龍，是大鳥的兩倍大。牠們是爬蟲類與鳥類的混合種，看起來像公雞，所以大家才這麼叫牠們…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3196</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty_int</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">12</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+          <struct id="1">
+            <resref label="Active"></resref>
+            <uint32 label="Index">19</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context">Cockatrices, also called &quot;skoffins,&quot; are a kind of ornithosaur. They&apos;re a link between reptiles and birds. Enormous, twice the size of a large bird, they resemble roosters, hence their common name…</exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="14">
+        <uint32 label="Id">2147482362</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Wporządku, pomówmy o kuroliszku.</string>
+          <string language="2">All right, let&apos;s talk about the cockatrice.</string>
+          <string language="4">All right, let&apos;s talk about the cockatrice.</string>
+          <string language="6">All right, what do you want to know?</string>
+          <string language="10">W porządku, pomówmy o kuroliszku.</string>
+          <string language="20">In Ordnung, was wollt Ihr wissen?</string>
+          <string language="22">Très bien, parlons du cocatrix !</string>
+          <string language="24">Hablemos del gallotriz.</string>
+          <string language="26">Parliamo della cockatrice...</string>
+          <string language="28">Хорошо, давай поговорим о кокатриксе.</string>
+          <string language="30">Dobře, promluvme si o kuroliškovi.</string>
+          <string language="32">Vitassuk meg a kukorix témát.</string>
+          <string language="42">好吧，你想知道什麼？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3200</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">17</uint32>
+            <byte label="IsChild">1</byte>
+            <uint32 label="Id">4294967295</uint32>
+            <exostring label="LinkComment"></exostring>
+            <byte label="IsMultilink">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="15">
+        <uint32 label="Id">2146882659</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Czuję się zaszczycony. Wiele dobrego słyszałem o wiedźmińskich technikach walki.</string>
+          <string language="2">I&apos;m honored. I&apos;ve heard a lot of good about witchers&apos; combat techniques.</string>
+          <string language="4">I&apos;m honored. I&apos;ve heard much praise concerning the combat skills of witchers.</string>
+          <string language="6">I&apos;ve heard much praise concerning the combat skills of witchers.</string>
+          <string language="10">Czuję się zaszczycony. Wiele dobrego słyszałem o wiedźmińskich technikach walki.</string>
+          <string language="20">Ich habe viel Gutes über die Kampfesfertigkeiten von Hexern gehört.</string>
+          <string language="22">J&apos;ai entendu maintes fois vanter les prouesses des sorceleurs au combat.</string>
+          <string language="24">He oído muchos elogios sobre el talento combativo de los brujos.</string>
+          <string language="26">Ho sentito parlare molto della famosa maestria in combattimento dei witcher.</string>
+          <string language="28">Рад знакомству. Я слышал много похвал в адрес боевых умений ведьмаков.</string>
+          <string language="30">O zaklínačském bojovém umění jsem slyšel jen samou chválu.</string>
+          <string language="32">Sok jót hallottam a witcherek harci képességeiről.</string>
+          <string language="42">我聽過不少人提過關於狩魔獵人的戰鬥能力。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3189</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">14</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="16">
+        <uint32 label="Id">7</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Widoczne stygmaty mutacji... białe włosy, pionowe źrenice...</string>
+          <string language="2">Clear signs of mutation.... white hair, vertical pupils...</string>
+          <string language="4">White hair, vertical pupils...Obvious signs of mutation....</string>
+          <string language="6">White hair, vertical pupils... signs of mutation....</string>
+          <string language="10">Widoczne stygmaty mutacji - białe włosy, pionowe źrenice...</string>
+          <string language="20">Weißes Haar, vertikale Pupillen ... Zeichen einer Mutation ...</string>
+          <string language="22">Cheveux blancs, pupilles verticales... les signes d&apos;une mutation...</string>
+          <string language="24">Pelo blanco, pupilas verticales... mutaciones...</string>
+          <string language="26">Capelli bianchi, pupille verticali... segni della mutazione...</string>
+          <string language="28">Белые волосы, вертикальные зрачки... Очевидные признаки мутаций....</string>
+          <string language="30">Bílé vlasy, svislé zorničky... znaky mutace...</string>
+          <string language="32">Fehér haj, függőleges pupillák... a mutáció jelei...</string>
+          <string language="42">白頭髮，垂直的瞳孔…變種的徵兆…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_782</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">interested</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">20</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="17">
+        <uint32 label="Id">2146882706</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Jak wolisz. Tylko nie zdziw się widząc martwe ścierwo kuroliszka. Do zobaczenia.</string>
+          <string language="2">As you prefer. But don&apos;t be surprised when you happen upon a cockatrice&apos;s corpse. See you.</string>
+          <string language="4">As you will. But don&apos;t be surprised when you happen upon a cockatrice&apos;s corpse. Farewell.</string>
+          <string language="6">As you will. But don&apos;t be surprised to see the cockatrice&apos;s corpse. Farewell.</string>
+          <string language="10">Jak wolisz. Tylko nie zdziw się widząc martwe ścierwo kuroliszka. Do zobaczenia.</string>
+          <string language="20">Aber seid nicht überrascht, wenn Ihr auf den Kadaver einer Gorgo stoßt.</string>
+          <string language="22">Ne soyez pas trop surpris lorsque vous tomberez sur le cadavre du cocatrix.</string>
+          <string language="24">No te sorprendas cuando veas el cadáver del gallotriz.</string>
+          <string language="26">Non sorprenderti se ti capiterà di trovare il cadavere di una cockatrice.</string>
+          <string language="28">Как пожелаешь. Но не удивляйся, если наткнешься на труп кокатрикса. Прощай.</string>
+          <string language="30">Jak chceš. Ale nebuď pak překvapený, až najdeš kuroliškovo bezvládné tělo.</string>
+          <string language="32">Csak ne lepődj meg, amikor meglátod a kukorix holttestét.</string>
+          <string language="42">就照你希望的吧。但別因為發現了石化雞蛇的屍體而感到驚訝。再會。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3197</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty_int</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList"/>
+        <exostring label="Context">Zygfryd and Geralt are going separetly to kill cockatrice, but they are still nice to each other.</exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="18">
+        <uint32 label="Id">2146882672</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Święty płomień poprowadzi moje ramię.</string>
+          <string language="2">The sacred flame will guide my arm.</string>
+          <string language="4">The sacred flame will guide my way.</string>
+          <string language="6">The sacred flame will guide me.</string>
+          <string language="10">Święty Płomień poprowadzi moje ramię.</string>
+          <string language="20">Die heilige Flamme leitet mich.</string>
+          <string language="22">La flamme sacrée me montre la voie.</string>
+          <string language="24">La llama sagrada me guiará.</string>
+          <string language="26">La Sacra Fiamma mi guiderà.</string>
+          <string language="28">Священное пламя осветит мой путь.</string>
+          <string language="30">Nechám se vést svatým plamenem.</string>
+          <string language="32">A szent láng irányítani fog engem.</string>
+          <string language="42">神聖之火會引導我的。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3190</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty_int</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">16</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="19">
+        <uint32 label="Id">13</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Przepraszam, nieznajomy. Jestem Zygfryd, rycerz Zakonu Płonącej Róży. Nie chciałem być niegrzeczny, po prostu pierwszy raz widzę jednego z waszej konfraterni.</string>
+          <string language="2">Forgive me, stranger. I am Siegfried, a knight of the Order of the Flaming Rose. I didn&apos;t mean to be rude, it&apos;s simply the first time I have seen a representative of your brotherhood.</string>
+          <string language="4">Forgive me, stranger. I meant no ill respect. I&apos;d not seen one of your kind before. I am Siegfried, a knight of the Order of the Flaming Rose.</string>
+          <string language="6">Forgive me, I meant no harm. I&apos;m Siegfried, a Knight of the Order of the Flaming Rose.</string>
+          <string language="10">Przepraszam, nieznajomy. Jestem Zygfryd, rycerz Zakonu Płonącej Róży. Nie chciałem być niegrzeczny, po prostu pierwszy raz widzę jednego z waszej konfraterni.</string>
+          <string language="20">Vergebt mir, ich wollte Euch nicht kränken. Ich bin Siegfried, ein Ritter vom Orden der Flammenrose.</string>
+          <string language="22">Mes excuses. Je ne voulais pas vous froisser. Je suis Siegfried, chevalier de l&apos;Ordre de la Rose-Ardente.</string>
+          <string language="24">Perdona, fue sin querer. Soy Siegfried, caballero de la Orden de la Rosa Llameante.</string>
+          <string language="26">Perdonami, non intendevo mancarti di rispetto. Sono Siegfried, cavaliere dell&apos;Ordine della Rosa Fiammeggiante.</string>
+          <string language="28">Прости меня, незнакомец. Я не хотел тебя оскорбить. Я никогда раньше не видел таких как ты. Я - Зигфрид, рыцарь ордена Пылающей Розы.</string>
+          <string language="30">Odpusť, nechtěl jsem tě urazit. Jsem Sigfried, rytíř Řádu planoucí růže.</string>
+          <string language="32">Bocsáss meg, nem sértegetni akartalak. Siegfried vagyok. A Lángoló Rózsa Rendjének lovagja.</string>
+          <string language="42">抱歉，我沒有惡意。我是齊格菲，烈焰薔薇的騎士。</string>
+        </locstring>
+        <resref label="Script">zygfryd_info</resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_1292</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">friendly</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">15</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="20">
+        <uint32 label="Id">2146882769</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A zatem, wiedźminie, skoffin to przerośnięty kogut, tyle że groźniejszy.</string>
+          <string language="2">Well, witcher, in brief: the skoffin is an overgrown rooster, but far more dangerous.</string>
+          <string language="4">Well, witcher, in brief: the skoffin is an overgrown rooster, but far more dangerous.</string>
+          <string language="6">In brief, witcher, the cockatrice is an overgrown rooster, but far more dangerous.</string>
+          <string language="10">A zatem, wiedźminie, skoffin to przerośnięty kogut, tyle że groźniejszy.</string>
+          <string language="20">Kurz gesagt, Hexer: Die Gorgo ist ein zu groß geratener Hahn - nur gefährlicher.</string>
+          <string language="22">Le cocatrix est un coq gigantesque et extrêmement dangereux.</string>
+          <string language="24">El gallotriz es un gallo grande, pero mucho más peligroso</string>
+          <string language="26">La cockatrice è un gallo troppo cresciuto, ma molto più pericoloso.</string>
+          <string language="28">Хорошо, ведьмак, коротко: скоффин - это петух-переросток, но он куда более опасен.</string>
+          <string language="30">Kurolišek je přerostlý kohout, ale je mnohem nebezpečnější.</string>
+          <string language="32">A kukorix egy túlméretezett kakas, de sokkal veszélyesebb.</string>
+          <string language="42">簡單說呢，狩魔獵人，石化雞蛇是種長得過大的公雞，但危險性更高。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3202</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">18</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="21">
+        <uint32 label="Id">2146882653</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Tak, Geralt?</string>
+          <string language="2">Yes, Geralt?</string>
+          <string language="4">Yes, Geralt?</string>
+          <string language="6">Yes?</string>
+          <string language="10">Tak, Geralt?</string>
+          <string language="20">Ja?</string>
+          <string language="22">Oui ?</string>
+          <string language="24">¿Sí?</string>
+          <string language="26">Sì?</string>
+          <string language="28">Да, Геральт?</string>
+          <string language="30">Ano, Geralte?</string>
+          <string language="32">Igen?</string>
+          <string language="42">啊？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3186</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="ESCreature">__owner__</exostring>
+            <exostring label="ESName">lofty</exostring>
+          </struct>
+        </list>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">17</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+          <struct id="1">
+            <resref label="Active"></resref>
+            <uint32 label="Index">13</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="22">
+        <uint32 label="Id">2146882665</uint32>
+        <list label="ResponsesList">
+          <struct id="0">
+            <uint32 label="ResponseX">0</uint32>
+            <uint32 label="ResponseY">0</uint32>
+          </struct>
+        </list>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Speaker">__owner__</exostring>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Kuroliszek, prawda? Tak się składa, że do kanałów sprowadza mnie ten sam cel.</string>
+          <string language="2">A cockatrice, correct? It so happens that I&apos;m in the sewers for the same reason.</string>
+          <string language="4">You&apos;re not hunting a cockatrice, are you? That&apos;s why I&apos;m in these sewers.</string>
+          <string language="6">A cockatrice, correct? That&apos;s why I&apos;m here.</string>
+          <string language="10">Kuroliszek, prawda? Tak się składa, że do kanałów sprowadza mnie ten sam cel.</string>
+          <string language="20">Eine Gorgo? Darum bin nämlich ich hier.</string>
+          <string language="22">Vous ne chasseriez pas un cocatrix ? C&apos;est la raison de ma présence ici.</string>
+          <string language="24">¿Vas a cazar un gallotriz? A eso he venido.</string>
+          <string language="26">Stai cacciando una cockatrice? È per questo che sono qui...</string>
+          <string language="28">Ты охотишься на кокатрикса? Я здесь по той же причине.</string>
+          <string language="30">Lovíš kuroliška, že? Proto jsem tu i já.</string>
+          <string language="32">Egy kukorixra vadászol? Én ezért vagyok itt.</string>
+          <string language="42">獵殺石化雞蛇，對吧？這是我來下水道的原因。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">sgfr_206_3185</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <sint32 label="VoicesetTag">0</sint32>
+        <byte label="CameraShot">0</byte>
+        <uint32 label="JournalId">0</uint32>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="RepliesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">21</uint32>
+            <byte label="IsChild">0</byte>
+            <byte label="DisplayInactive">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="ReplyList">
+      <struct id="0">
+        <uint32 label="Id">2146882700</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Dzięki, ale muszę odmówić. Zawszę pracuję sam.</string>
+          <string language="2">Thanks, but I have to refuse. I work alone.</string>
+          <string language="4">Thanks, but no thanks. I work alone.</string>
+          <string language="6">No thanks. I work alone.</string>
+          <string language="10">Dzięki, ale muszę odmówić. Pracuję sam.</string>
+          <string language="20">Nein danke, ich arbeite allein.</string>
+          <string language="22">Non merci ! Je travaille seul.</string>
+          <string language="24">No. Trabajo solo.</string>
+          <string language="26">No, lavoro da solo.</string>
+          <string language="28">Спасибо, но нет. Я всегда работаю один.</string>
+          <string language="30">Ne. Pracuju sám.</string>
+          <string language="32">Nem. Én egyedül dolgozom.</string>
+          <string language="42">不用了。我單獨行動。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3218</resref>
+        <exostring label="Quest">q2014 SP 2m &quot;cocatrice&quot;</exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">17</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="1">
+        <uint32 label="Id">4</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">W rzeczy samej.</string>
+          <string language="2">In person.</string>
+          <string language="4">Indeed.</string>
+          <string language="6">Indeed.</string>
+          <string language="10">Owszem! W rzeczy samej.</string>
+          <string language="20">Oh, ja.</string>
+          <string language="22">Exactement !</string>
+          <string language="24">Desde luego.</string>
+          <string language="26">Già.</string>
+          <string language="28">Именно.</string>
+          <string language="30">Však uvidíš.</string>
+          <string language="32">Így van.</string>
+          <string language="42">的確。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_781</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">16</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="2">
+        <uint32 label="Id">2146882681</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A zatem konkurencja dla wiedźminów?</string>
+          <string language="2">Competing with witchers?</string>
+          <string language="4">You&apos;re doing witchers&apos; work?</string>
+          <string language="6">Wait… that&apos;s witchers&apos; work.</string>
+          <string language="10">A zatem konkurencja dla wiedźminów?</string>
+          <string language="20">Wartet … Das ist Hexerarbeit!</string>
+          <string language="22">C&apos;est le travail des sorceleurs !</string>
+          <string language="24">¡Ése el trabajo de los brujos!</string>
+          <string language="26">Ma questo è un lavoro da witcher!</string>
+          <string language="28">Делаете работу ведьмаков?</string>
+          <string language="30">To je práce zaklínačů!</string>
+          <string language="32">Ez a witcherek dolga.</string>
+          <string language="42">等等...那是狩魔獵人的工作！</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3207</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">5</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="3">
+        <uint32 label="Id">2146882697</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Niezły pomysł. Chodźmy razem.</string>
+          <string language="2">Good idea. Let&apos;s go.</string>
+          <string language="4">Agreed. Let&apos;s go.</string>
+          <string language="6">Agreed. Let&apos;s go.</string>
+          <string language="10">Niezły pomysł. Chodźmy razem.</string>
+          <string language="20">Einverstanden. Gehen wir.</string>
+          <string language="22">Entendu ! Allons-y !</string>
+          <string language="24">De acuerdo. Vamos.</string>
+          <string language="26">D&apos;accordo, andiamo.</string>
+          <string language="28">Договорились. Идем.</string>
+          <string language="30">Dobře. Jdeme.</string>
+          <string language="32">Egyetértek. Menjünk.</string>
+          <string language="42">我同意。咱們走吧。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3219</resref>
+        <exostring label="Quest">q2014 SP 1m &quot;cocatrice&quot;</exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">3</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="4">
+        <uint32 label="Id">2146882687</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Tak, a lśniące zbroje i zamki warowne ufundowały wam dobre wróżki.</string>
+          <string language="2">Yeah, and some good fairies funded your shiny armor and fortified castles.</string>
+          <string language="4">I suppose fairies funded your shiny armor and fortified castles.</string>
+          <string language="6">I suppose fairies funded your armor and castles.</string>
+          <string language="10">Tak, a lśniące zbroje i zamki warowne ufundowały wam dobre wróżki.</string>
+          <string language="20">Dann finanzieren wohl Feen Eure Rüstungen und Burgen.</string>
+          <string language="22">Et ce sont des fées qui ont payé votre armure et vos forteresses ?</string>
+          <string language="24">Quizá las hadas os pagaron las armaduras y los castillos.</string>
+          <string language="26">Immagino che la tua armatura scintillante e il tuo castello siano stati creati dalle fate...</string>
+          <string language="28">Я так полагаю, что феи скинулись на ваши сверкающие доспехи и укрепленные замки.</string>
+          <string language="30">Tak tak. A to nablýskané brnění a nedobytné hrady vám zaplatila kmotřička víla.</string>
+          <string language="32">Talán a páncélodat és váradat tündérektől kaptad.</string>
+          <string language="42">我猜是小妖精們贊助你們盔甲和堡壘吧。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3204</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">__player__</exostring>
+            <exostring label="EmotionalStateNa">amused</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">4</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="5">
+        <uint32 label="Id">2147428751</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">[continue]</string>
+          <string language="2">[continue]</string>
+          <string language="10">[continue]</string>
+          <string language="30">[continue]</string>
+          <string language="32">[continue]</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound"></resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">6</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="6">
+        <uint32 label="Id">2147428767</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Zaiste, bohaterska śmierć...</string>
+          <string language="2">Indeed, a heroic death…</string>
+          <string language="4">Indeed, a heroic death…</string>
+          <string language="6">A heroic death…</string>
+          <string language="10">Zaiste, bohaterska śmierć...</string>
+          <string language="20">Ein Heldentod ...</string>
+          <string language="22">Quelle fin héroïque !</string>
+          <string language="24">Una muerte heroica...</string>
+          <string language="26">Una morte eroica...</string>
+          <string language="28">Воистину, героическая смерть...</string>
+          <string language="30">Hrdinská smrt...</string>
+          <string language="32">Hősi halál...</string>
+          <string language="42">光榮地戰死…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3221</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">0</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="7">
+        <uint32 label="Id">2147428761</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">[continue]</string>
+          <string language="2">[continue]</string>
+          <string language="10">[continue]</string>
+          <string language="30">[continue]</string>
+          <string language="32">[continue]</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound"></resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">7</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="8">
+        <uint32 label="Id">2146882764</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Współczuję. Polowałeś też na mantikorę?</string>
+          <string language="2">My sympathies. Did you hunt the manticore, too?</string>
+          <string language="4">My sympathies. Did you hunt the manticore, too?</string>
+          <string language="6">My sympathies. Did you hunt the manticore, too?</string>
+          <string language="10">Współczuję. Polowałeś też na mantikorę?</string>
+          <string language="20">Mein Beileid. Habt Ihr die Mantikora auch gejagt?</string>
+          <string language="22">Toutes mes condoléances. Avez-vous traqué la manticore ?</string>
+          <string language="24">Te doy el pésame. ¿También cazaste a la mantícora?</string>
+          <string language="26">Le mie condoglianze... hai cacciato anche la manticora?</string>
+          <string language="28">Мои соболезнования. Ты и на мантикору охотился?</string>
+          <string language="30">Upřímnou soustrast. Mantikoru jsi lovil taky?</string>
+          <string language="32">Részvétem. Vadásztál mantikórra is?</string>
+          <string language="42">我很同情你的遭遇。你也獵殺飛獅怪？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3212</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">8</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="9">
+        <uint32 label="Id">2146882758</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Imponująca wiedza.</string>
+          <string language="2">Impressive knowledge.</string>
+          <string language="4">Impressive knowledge.</string>
+          <string language="6">Impressive knowledge.</string>
+          <string language="10">Imponująca wiedza.</string>
+          <string language="20">Eindrucksvolles Wissen.</string>
+          <string language="22">Quelle érudition !</string>
+          <string language="24">Impresiona lo que sabes.</string>
+          <string language="26">Una conoscenza davvero notevole...</string>
+          <string language="28">Впечатляющие познания.</string>
+          <string language="30">Pozoruhodné znalosti.</string>
+          <string language="32">Lenyűgöző a tudásod.</string>
+          <string language="42">相當有知識呢。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3213</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">9</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="10">
+        <uint32 label="Id">2146882752</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A jakie składniki alchemiczne można pozyskać z kuroliszka?</string>
+          <string language="2">What alchemical ingredients can you obtain from the cockatrice?</string>
+          <string language="4">What alchemical ingredients can be taken from the cockatrice?</string>
+          <string language="6">Anything useful to be taken from the carcass?</string>
+          <string language="10">Jakie składniki alchemiczne można pozyskać z kuroliszka?</string>
+          <string language="20">Bietet der Kadaver irgendetwas brauchbares?</string>
+          <string language="22">Que peut-on récupérer sur un cocatrix ?</string>
+          <string language="24">¿Se puede sacar algo útil del cuerpo?</string>
+          <string language="26">Cosa si può ricavare da una cockatrice?</string>
+          <string language="28">Какие алхимические ингредиенты можно получить из кокатрикса?</string>
+          <string language="30">A jaké alchymistické přísady lze z kuroliška získat?</string>
+          <string language="32">Van a kukorixnak olyan része, amit fel lehet használni?</string>
+          <string language="42">那石化雞蛇屍體可以取得什麼有用材料？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3211</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">__player__</exostring>
+            <exostring label="EmotionalStateNa">interested</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">10</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="11">
+        <uint32 label="Id">2146882746</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Czyli jak według ciebie, należy walczyć z takim potworem?</string>
+          <string language="2">So how do you think the monster should be fought?</string>
+          <string language="4">What are your thoughts on killing this beast?</string>
+          <string language="6">So how would you say the beast can be killed?</string>
+          <string language="10">Jak więc, według ciebie, należy walczyć z takim potworem?</string>
+          <string language="20">Und wie tötet man die Bestie?</string>
+          <string language="22">Comment comptez-vous tuer cette bête ?</string>
+          <string language="24">¿Cómo se mata a la bestia?</string>
+          <string language="26">Come si fa a uccidere questa bestia?</string>
+          <string language="28">Что ты думаешь по поводу убийства этой твари?</string>
+          <string language="30">Takže jak tu nestvůru zabít?</string>
+          <string language="32">Hogy kellene elpusztítani ezt a bestiát?</string>
+          <string language="42">那麼你說說看，要怎麼殺死這隻怪物？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3215</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">__player__</exostring>
+            <exostring label="EmotionalStateNa">interested</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">11</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="12">
+        <uint32 label="Id">2146882715</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__player__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">To ciekawe, mów dalej.</string>
+          <string language="2">Interesting. Go on…</string>
+          <string language="4">Interesting. Go on…</string>
+          <string language="6">Go on…</string>
+          <string language="10">To ciekawe, mów dalej.</string>
+          <string language="20">Fahrt fort ...</string>
+          <string language="22">Quoi d&apos;autre ?</string>
+          <string language="24">Continúa...</string>
+          <string language="26">Continua...</string>
+          <string language="28">Любопытно. Продолжай...</string>
+          <string language="30">Jen povídej.</string>
+          <string language="32">Folytasd.</string>
+          <string language="42">繼續…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3216</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState">
+          <struct id="0">
+            <exostring label="EmotionalStateCr">__player__</exostring>
+            <exostring label="EmotionalStateNa">interested</exostring>
+          </struct>
+        </list>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">12</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="13">
+        <uint32 label="Id">2146882709</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A co ty właściwie wiesz o kuroliszkach?</string>
+          <string language="2">What do you know about cockatrices?</string>
+          <string language="4">What do you know about cockatrices?</string>
+          <string language="6">What do you know about cockatrices?</string>
+          <string language="10">A co ty właściwie wiesz o kuroliszkach?</string>
+          <string language="20">Was wisst Ihr über Gorgonen?</string>
+          <string language="22">Qu&apos;est-ce que vous savez sur les cocatrix ?</string>
+          <string language="24">¿Qué sabes de los gallotrices?</string>
+          <string language="26">Cosa sai sulle cockatrici?</string>
+          <string language="28">Что ты знаешь о кокатриксах?</string>
+          <string language="30">A co vůbec víš o kurolišcích?</string>
+          <string language="32">Mit tudsz a kukorixokról?</string>
+          <string language="42">你對於石化雞蛇知道些什麼？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3217</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">13</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context">Geralt wants to know what Zygfryd knows about cockatrices.</exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="14">
+        <uint32 label="Id">2146882662</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Pozwolisz, że odpuścimy sobie grzeczności. Mam tu zadanie do wykonania i chciałbym się szybko uwinąć.</string>
+          <string language="2">If you don&apos;t mind, let&apos;s skip the courtesies. I have a job to do here and I wouldn&apos;t mind getting it done fast.</string>
+          <string language="4">If you don&apos;t mind, I&apos;d rather quit the chitchat. I&apos;ve got work here and I&apos;d like to do it fast.</string>
+          <string language="6">If you don&apos;t mind, I have some work to do down here and I&apos;d like to get it done fast.</string>
+          <string language="10">Pozwolisz, że darujemy sobie grzeczności. Mam tu zadanie do wykonania i chciałbym się szybko uwinąć.</string>
+          <string language="20">Wenn es Euch nichts ausmacht, ich habe hier noch was zu tun und möchte es schnell erledigen.</string>
+          <string language="22">Si vous permettez, j&apos;ai à faire et je voudrais en finir vite.</string>
+          <string language="24">Por favor. Tengo trabajo y me gustaría hacerlo rápido.</string>
+          <string language="26">Per favore, ho del lavoro da fare, e preferirei finire in fretta.</string>
+          <string language="28">Если ты не против, я бы прекратил болтовню. У меня есть здесь работа, и я хочу сделать ее быстро.</string>
+          <string language="30">Prosím. Mám tu práci a chtěl bych to vyřídit rychle.</string>
+          <string language="32">Kérlek. Munkaügyben vagyok itt, és nem érek rá.</string>
+          <string language="42">如果你不介意的話，我還有些工作得進行，我想趕快搞定。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3209</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">22</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="15">
+        <uint32 label="Id">16</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Jestem Geralt. Wiedźmin, jak trafnie zauważyłeś.</string>
+          <string language="2">I&apos;m Geralt. A witcher, as you rightly noted.</string>
+          <string language="4">I&apos;m Geralt. A witcher, as you so noted.</string>
+          <string language="6">I&apos;m Geralt.</string>
+          <string language="10">Jestem Geralt. Wiedźmin, jak trafnie zauważyłeś.</string>
+          <string language="20">Ich bin Geralt.</string>
+          <string language="22">Je suis Geralt.</string>
+          <string language="24">Soy Geralt.</string>
+          <string language="26">Io sono Geralt.</string>
+          <string language="28">Я - Геральт. Ведьмак, как ты уже заметил.</string>
+          <string language="30">Já jsem Geralt.</string>
+          <string language="32">Én Geralt vagyok.</string>
+          <string language="42">我是傑洛特。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_1293</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">15</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="16">
+        <uint32 label="Id">2146882675</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">A mogę wiedzieć, co skłoniło rycerza Płonącej Róży do wyprawy w kanały śladami bestii?</string>
+          <string language="2">Can you tell me what prompted a knight of the Flaming Rose to venture into the sewers after a beast?</string>
+          <string language="4">What prompted a knight of the Flaming Rose to enter the sewers after a beast?</string>
+          <string language="6">What prompted you to enter the sewers after a beast?</string>
+          <string language="10">A mogę wiedzieć, co skłoniło rycerza Płonącej Róży do wyprawy w kanały śladami bestii?</string>
+          <string language="20">Was veranlasst Euch, auf der Jagd nach einer Bestie in die Kloaken hinabzusteigen?</string>
+          <string language="22">Qu&apos;est-ce qui a pu vous conduire à traquer une bête dans les égouts ?</string>
+          <string language="24">¿Qué hace que entres en las cloacas detrás de una bestia?</string>
+          <string language="26">Cosa ti ha spinto a inseguire una bestia giù nelle fogne?</string>
+          <string language="28">Что подтолкнуло рыцаря Пылающей Розы спуститься в канализацию за чудовищем?</string>
+          <string language="30">A můžeš mi říct, co tě přimělo se za tou bestií vypravit?</string>
+          <string language="32">Mi késztetett arra, hogy kövess egy szörnyet a csatornába?</string>
+          <string language="42">是什麼驅使你進下水道殺怪物？</string>
+        </locstring>
+        <resref label="Script">order_info</resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3206</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">2</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="17">
+        <uint32 label="Id">2146882656</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor">__owner__</exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">2</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Chcesz zabić kuroliszka? Sądzisz, że sobie poradzisz?</string>
+          <string language="2">Want to kill the cockatrice? Reckon you can manage?</string>
+          <string language="4">You&apos;re here for the cockatrice? Think you&apos;ll kill it?</string>
+          <string language="6">Think you can kill the cockatrice?</string>
+          <string language="10">Chcesz zabić kuroliszka? Sądzisz, że sobie poradzisz?</string>
+          <string language="20">Glaubt Ihr, Ihr könnt die Gorgo töten?</string>
+          <string language="22">Vous pensez pouvoir tuer le cocatrix ?</string>
+          <string language="24">¿Crees que podrás matar al gallotriz?</string>
+          <string language="26">Credi di poter uccidere la cockatrice?</string>
+          <string language="28">Ты пришел за кокатриксом? Думаешь, сможешь убить его?</string>
+          <string language="30">Myslíš, že kuroliška zabiješ?</string>
+          <string language="32">Azt hiszed, meg tudod ölni a kukorixot?</string>
+          <string language="42">你想你能殺死石化雞蛇嗎？</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3210</resref>
+        <exostring label="Quest"></exostring>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">18</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="18">
+        <uint32 label="Id">2146882772</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Daruj sobie też sarkazm.</string>
+          <string language="2">Spare me your sarcasm.</string>
+          <string language="4">Spare me your sarcasm.</string>
+          <string language="6">And your sarcasm…</string>
+          <string language="10">Daruj sobie też sarkazm.</string>
+          <string language="20">Und mit Eurem Sarkasmus.</string>
+          <string language="22">Epargnez-moi vos sarcasmes !</string>
+          <string language="24">Déjate de sarcasmo.</string>
+          <string language="26">Risparmiami il tuo sarcasmo.</string>
+          <string language="28">Избавь меня от своего сарказма.</string>
+          <string language="30">Ten sarkasmus si nech pro sebe.</string>
+          <string language="32">Kímélj meg a szarkazmusodtól.</string>
+          <string language="42">還有你的挖苦…</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3214</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">14</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="19">
+        <uint32 label="Id">2146882718</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Daruj mi naukowy bełkot.</string>
+          <string language="2">Spare me your scientific babble.</string>
+          <string language="4">Spare me your scientific babble.</string>
+          <string language="6">Spare me your scientific babble.</string>
+          <string language="10">Daruj mi naukowy bełkot.</string>
+          <string language="20">Verschont mich mit diesem wissenschaftlichen Geschwätz.</string>
+          <string language="22">Epargnez-moi le blabla scientifique !</string>
+          <string language="24">Déjate de parloteo científico.</string>
+          <string language="26">Meno chiacchiere scientifiche...</string>
+          <string language="28">Избавь меня от твоего научного бормотания.</string>
+          <string language="30">Zkrať to.</string>
+          <string language="32">Kímélj meg a tudományos gagyogásól.</string>
+          <string language="42">省省你的科學名詞胡扯了。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3220</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">20</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="20">
+        <uint32 label="Id">10</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Wybacz, nie chce mi się rozbierać i nie pochwalę się resztą zmian anatomicznych.</string>
+          <string language="2">Forgive me, but I&apos;ll refrain from undressing and demonstrating the rest of my anatomical changes.</string>
+          <string language="4">Excuse me, but I&apos;d rather skip the medical exam.</string>
+          <string language="6">Skip the medical exam.</string>
+          <string language="10">Wybacz, nie chce mi się rozbierać i nie pochwalę się resztą zmian anatomicznych.</string>
+          <string language="20">Spart Euch das ärztliche Gutachten.</string>
+          <string language="22">Pourrions-nous éviter l&apos;examen médical ?</string>
+          <string language="24">Omite el reconocimiento médico.</string>
+          <string language="26">Salta pure l&apos;esame medico.</string>
+          <string language="28">Прости, но я не хотел бы раздеваться, и предпочел бы избежать демонстрации своих анатомических особенностей.</string>
+          <string language="30">Přeskoč ten medicínský rozbor.</string>
+          <string language="32">Lépjünk túl az orvosi vizsgálatokon.</string>
+          <string language="42">跳過醫學檢查。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_884</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">19</uint32>
+            <byte label="IsChild">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+      <struct id="21">
+        <uint32 label="Id">2146882721</uint32>
+        <uint32 label="GPAction">0</uint32>
+        <exostring label="Speaker">__player__</exostring>
+        <exostring label="Interlocutor"></exostring>
+        <list label="Rotate Towards"/>
+        <exostring label="Comment"></exostring>
+        <uint32 label="Animation">0</uint32>
+        <byte label="AnimLoop">1</byte>
+        <uint32 label="NodeType">1</uint32>
+        <locstring label="Text" strref="4294967295">
+          <string language="0">Porozmawiajmy chwilę.</string>
+          <string language="2">Let&apos;s talk a while.</string>
+          <string language="4">Hmm. Let&apos;s talk.</string>
+          <string language="6">Let&apos;s talk.</string>
+          <string language="10">Porozmawiajmy.</string>
+          <string language="20">Reden wir.</string>
+          <string language="22">J&apos;aimerais discuter...</string>
+          <string language="24">Hablemos.</string>
+          <string language="26">Parliamo un po&apos;...</string>
+          <string language="28">Хмм. Давай поговорим.</string>
+          <string language="30">Radši bych si promluvil.</string>
+          <string language="32">Beszéljünk.</string>
+          <string language="42">讓我們談談。</string>
+        </locstring>
+        <resref label="Script"></resref>
+        <uint32 label="Delay">0</uint32>
+        <resref label="Sound">grlt_206_3205</resref>
+        <uint32 label="QuestEntry">0</uint32>
+        <exostring label="GPActionParam1"></exostring>
+        <exostring label="GPActionParam2"></exostring>
+        <exostring label="GPActionParam3"></exostring>
+        <byte label="CameraShot">0</byte>
+        <list label="ReqFlagList"/>
+        <list label="FlagsAfterList"/>
+        <list label="EmotionalState"/>
+        <list label="EntriesList">
+          <struct id="0">
+            <resref label="Active"></resref>
+            <uint32 label="Index">21</uint32>
+            <byte label="IsChild">1</byte>
+            <uint32 label="Id">4294967295</uint32>
+            <exostring label="LinkComment"></exostring>
+            <byte label="IsMultilink">0</byte>
+          </struct>
+        </list>
+        <exostring label="Context"></exostring>
+        <exostring label="DirectorsClue"></exostring>
+      </struct>
+    </list>
+    <list label="StartingList">
+      <struct id="0">
+        <resref label="Active"></resref>
+        <uint32 label="Index">1</uint32>
+      </struct>
+      <struct id="1">
+        <resref label="Active"></resref>
+        <uint32 label="Index">21</uint32>
+      </struct>
+    </list>
+  </struct>
+</gff3>

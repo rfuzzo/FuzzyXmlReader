@@ -91,7 +91,7 @@ namespace FuzzyXmlReader.IO
                 //add generic start sections to section list
                 // FIXME pause?
                 var startelement = new XElement("PAUSE",
-                    //new XAttribute("section", $"section_start_{i}"),
+                    new XAttribute("section", $"section_start_{i}"),
                     new XAttribute("ref", $"start_{i}")
                     );
                 Dialogscripts.Add(startelement);
@@ -156,7 +156,7 @@ namespace FuzzyXmlReader.IO
                     int newidx = int.Parse(reply.GetCommonObjectByName("Index").Value.ToString());
 
                     //if there is a choice, flag the two replies
-                    bool ischildSection = isSection || replies.Value.Count > 1 || isquest;
+                    bool ischildSection = replies.Value.Count > 1 || isquest;
                     WriteTree(gff3, output, newidx, "reply", ischildSection);
                 }
             }
@@ -338,12 +338,6 @@ namespace FuzzyXmlReader.IO
             }
 
 
-            string snd = data.GetCommonObjectByName("Sound")?.Value?.ToString();
-            bool issound = !string.IsNullOrEmpty(snd);
-            if (issound)
-            {
-                ret.Add(new XAttribute("Sound", snd));
-            }
 
             return sdata;
         }
@@ -432,7 +426,7 @@ namespace FuzzyXmlReader.IO
                     {
                         item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
                     }
-                    else //FIXME is that even called?
+                    else
                     {
                         var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
                         last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
