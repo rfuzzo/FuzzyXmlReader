@@ -261,23 +261,29 @@ namespace FuzzyXmlReader.IO
             bool isQuestParent = !String.IsNullOrEmpty(dsdata.questfact);
             if (isQuestParent)
             {
-
-
                 //add to quest list
-                AddToSectionsNoDuplicates(Doc, dsdata.questfact, $"quest_{idx}");
+                AddToSectionsNoDuplicates(Doc, $"script_setfact_{dsdata.questfact}", $"quest_{idx}");
+
+                //add quest xml tags
+               
+                var scriptelement = new XElement("SCRIPT",
+                    new XAttribute("function", "AddFact_S"),
+                    new XElement("parameter", 
+                        new XAttribute("factName", $"{dsdata.questfact}"),
+                        new XAttribute("value", $"1"),
+                        new XAttribute("validFor", $"0")
+                        ));
+                var questelement = new XElement("QUEST",
+                   new XAttribute("Name", dsdata.questfact),
+                   new XAttribute("section", $"script_setfact_{dsdata.questfact}"),
+                   new XAttribute("ref", $"quest_{idx}"),
+                   scriptelement
+                   );
 
                 // reshuffle nodes
-                var questelement = new XElement("QUEST",
-                    new XAttribute("Name", dsdata.questfact),
-                    new XAttribute("section", $"quest_{idx}"),
-                    new XAttribute("ref", $"quest_{idx}"));
-
-                var x = output.Elements().ToList();
-
                 output.Add(questelement);
-                //output = output.Element("QUEST");
-
                 parent.Add(output);
+                output = output.Element("QUEST");
             }
             else
             {
@@ -287,6 +293,12 @@ namespace FuzzyXmlReader.IO
             return isQuestParent;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="name"></param>
+        /// <param name="id"></param>
         private static void AddToSectionsNoDuplicates(XDocument doc, string name, string id)
         {
             XElement SectionsList = doc.Descendants("Settings").First()?.Element("SectionsList");
@@ -316,6 +328,11 @@ namespace FuzzyXmlReader.IO
             bool isquest = !string.IsNullOrEmpty(qf);
             if (isquest)
             {
+                //remove special characters
+                qf = qf.Replace(' ', '_');
+                Regex rgx = new Regex("[^a-zA-Z0-9_]");
+                qf = rgx.Replace(qf, "").ToLower();
+                
                 ret.Add(new XAttribute("Quest", qf));
                 sdata.questfact = qf;
             }
@@ -409,11 +426,18 @@ namespace FuzzyXmlReader.IO
 
                 //if it is a section but has no descendents that point to any other section
                 //add EXIT
-                /*if (refnode.Count == 0)
+                if (refnode.Count == 0)
                 {
-                    var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
-                    last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
-                }*/
+                    if (item.Attribute("END")?.Value != null)
+                    {
+                        item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                    }
+                    else //FIXME is that even called?
+                    {
+                        var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
+                        last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                    }
+                }
 
 
 

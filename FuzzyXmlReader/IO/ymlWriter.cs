@@ -232,6 +232,7 @@ namespace FuzzyXmlReader.IO
                             string Text = el.Attribute("Text")?.Value;
                             string Sound = el.Attribute("Sound")?.Value;                            
 
+
                             if (el.Name == "CHOICE")
                             {
                                 foreach (var choice in el.Elements())
@@ -259,6 +260,7 @@ namespace FuzzyXmlReader.IO
                             {
                                 iw.WriteLine($"- SCRIPT:");
                                 iw.Indent = 3;
+
                                 iw.WriteLine($"- function: {el.Attribute("function").Value}");
                                 iw.WriteLine($"- parameter:");
                                 iw.Indent = 4;
@@ -269,7 +271,7 @@ namespace FuzzyXmlReader.IO
                             }
                             else if (el.Name == "reply" || el.Name == "entry")
                             {
-                                if (String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)) //FIXME does that happen?
+                                if(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)) //FIXME does that happen?
                                 {
                                     continue;
                                 }
