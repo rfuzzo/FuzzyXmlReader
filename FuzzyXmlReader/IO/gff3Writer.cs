@@ -236,6 +236,10 @@ namespace FuzzyXmlReader.IO
                 Player.Value = Speaker;
             attributes.Add(new XAttribute("Speaker", Speaker));
 
+            // Adding soundfile var
+            string Sound = data.GetCommonObjectByName("Sound").Value.ToString();
+            attributes.Add(new XAttribute("Sound", Sound));
+
             //OTHER 
             var dsdata = AttributeData(data, ref attributes);
             //QUESTS
