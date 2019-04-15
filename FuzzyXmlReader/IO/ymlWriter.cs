@@ -255,8 +255,25 @@ namespace FuzzyXmlReader.IO
                             {
                                 iw.WriteLine($"- PAUSE: 0");
                             }
-                            else if (!(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)))
+                            else if (el.Name == "SCRIPT")
                             {
+                                iw.WriteLine($"- SCRIPT:");
+                                iw.Indent = 3;
+                                iw.WriteLine($"- function: {el.Attribute("function").Value}");
+                                iw.WriteLine($"- parameter:");
+                                iw.Indent = 4;
+                                var param = el.Element("parameter");
+                                iw.WriteLine($"- factName: {param.Attribute("factName").Value}");
+                                iw.WriteLine($"- value: {param.Attribute("value").Value}");
+                                iw.WriteLine($"- validFor: {param.Attribute("validFor").Value}");
+                            }
+                            else if (el.Name == "reply" || el.Name == "entry")
+                            {
+                                if (String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)) //FIXME does that happen?
+                                {
+                                    continue;
+                                }
+
                                 var lines = File.ReadLines("D:\\W1Files\\audiolengths.txt");
                                 string audioLength = "";
                                 string StringID = "";
@@ -275,7 +292,7 @@ namespace FuzzyXmlReader.IO
                                 string shotName = $"shot_{ shotID.ToString()}";
                                 shotID += 1;
                                 iw.WriteLine($"- CUE: {shotName}");
-                                if(newActorName != "" && Speaker == "npc")
+                                if (newActorName != "" && Speaker == "npc")
                                     iw.WriteLine($"- {newActorName}: \"[{audioLength}]{StringID}|{Text}\"");
                                 else
                                     iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
