@@ -288,8 +288,7 @@ namespace FuzzyXmlReader.IO
                                         break;
                                     }
                                 }
-
-                                //string shotName = $"shot_{ shotID.ToString()}_{Speaker}";
+                                
                                 string shotName = $"shot_{ shotID.ToString()}";
                                 shotID += 1;
                                 iw.WriteLine($"- CUE: {shotName}");
@@ -298,7 +297,9 @@ namespace FuzzyXmlReader.IO
                                 else
                                     iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
 
-                                File.AppendAllText(Path.Combine(ResourceDir, "locale.en.csv"), $"{StringID}|00000000||{Text}" + Environment.NewLine);
+                                // skip these
+                                if(!Text.Contains("[continue]"))
+                                    File.AppendAllText(Path.Combine(ResourceDir, "locale.en.csv"), $"{StringID}|00000000||{Text}" + Environment.NewLine);
                             }
 
                         }
