@@ -244,12 +244,18 @@ namespace FuzzyXmlReader.IO
                                     string ChoiceStringID = "";
                                     foreach (var line in finallines)
                                     {
-                                        var arr = line.Split('|');
-                                        if (arr[3] == choiceText.Replace("…","..."))
+                                        var arr = line.Split('/');
+                                        if (arr[1] == choiceText.Replace("…","..."))
                                         {
                                             ChoiceStringID = arr[0];
                                             break;
                                         }
+                                    }
+
+                                    if(choiceText.Contains("||"))
+                                    {
+                                        var split = choiceText.Split('|');
+                                        choiceText = split[0];
                                     }
 
                                     iw.WriteLine($"- [\"{ChoiceStringID}|{choiceText}\", {SectionName}]");
@@ -284,7 +290,7 @@ namespace FuzzyXmlReader.IO
                             }
                             else if (el.Name == "reply" || el.Name == "entry")
                             {
-                                if(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text)) //FIXME does that happen?
+                                if(String.IsNullOrEmpty(Speaker) || String.IsNullOrEmpty(Text) || Text.Contains("[continue]"))
                                 {
                                     continue;
                                 }
@@ -302,7 +308,13 @@ namespace FuzzyXmlReader.IO
                                         break;
                                     }
                                 }
-                                
+
+                                if (Text.Contains("||"))
+                                {
+                                    var splittext = Text.Split('|');
+                                    Text = splittext[2];
+                                }
+
                                 string shotName = $"shot_{ shotID.ToString()}";
                                 shotID += 1;
                                 iw.WriteLine($"- CUE: {shotName}");
@@ -311,9 +323,7 @@ namespace FuzzyXmlReader.IO
                                 else
                                     iw.WriteLine($"- {Speaker}: \"[{audioLength}]{StringID}|{Text}\"");
 
-                                // skip these
-                                if(!Text.Contains("[continue]"))
-                                    File.AppendAllText(Path.Combine(ResourceDir, "locale.en.csv"), $"{StringID}|00000000||{Text}" + Environment.NewLine);
+                                File.AppendAllText(Path.Combine(ResourceDir, "locale.en.csv"), $"{StringID}|00000000||{Text}" + Environment.NewLine);
                             }
 
                         }

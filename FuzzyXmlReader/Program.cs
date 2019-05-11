@@ -23,16 +23,16 @@ namespace FuzzyXmlReader
             string ResourceDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             File.WriteAllText(Path.Combine(ResourceDir, "locale.en.csv"), stringsfie);
 
-            /*
+            
             string[] Files = new string[]
             {
                 //Path.Combine(ResourceDir, "cs0_06.xml"),
                 //Path.Combine(ResourceDir, "cs0_02b.xml"),
-                Path.Combine(ResourceDir, "cn_zygfryd01.xml"),
+                Path.Combine(ResourceDir, "q1005_kalkstein.xml"),
             };
-            */
+            
 
-            string[] Files = Directory.GetFiles("D:\\Xoreos Decoder v1\\dlg_export\\");
+            //string[] Files = Directory.GetFiles("D:\\Xoreos Decoder v1\\dlg_export\\");
 
 
 
