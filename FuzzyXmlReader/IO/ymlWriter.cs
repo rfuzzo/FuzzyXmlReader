@@ -226,7 +226,8 @@ namespace FuzzyXmlReader.IO
                             iw.Indent = 2;
                             string Speaker = el.Attribute("Speaker")?.Value;
                             string Text = el.Attribute("Text")?.Value;
-                            string Sound = el.Attribute("Sound")?.Value;                            
+                            string Sound = el.Attribute("Sound")?.Value;
+
 
 
                             if (el.Name == "CHOICE")
@@ -238,7 +239,20 @@ namespace FuzzyXmlReader.IO
                                     iw.Indent = 3;
                                     string SectionName = choice.Attribute("NEXT")?.Value;
                                     string choiceText = choice.Attribute("Text")?.Value;
-                                    iw.WriteLine($"- [\"{choiceText}\", {SectionName}]");
+
+                                    var finallines = File.ReadLines(Path.Combine(ResourceDir, "final.locale.en.csv"));
+                                    string ChoiceStringID = "";
+                                    foreach (var line in finallines)
+                                    {
+                                        var arr = line.Split('|');
+                                        if (arr[3] == choiceText.Replace("…","..."))
+                                        {
+                                            ChoiceStringID = arr[0];
+                                            break;
+                                        }
+                                    }
+
+                                    iw.WriteLine($"- [\"{ChoiceStringID}|{choiceText}\", {SectionName}]");
                                 }
                             }
                             else if (el.Name == "REF")
