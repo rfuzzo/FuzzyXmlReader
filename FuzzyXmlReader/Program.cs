@@ -1,15 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.IO;
-using System.Xml;
-using FuzzyXmlReader.gff3Types;
+﻿using FuzzyXmlReader.gff3Types;
 using FuzzyXmlReader.IO;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace FuzzyXmlReader
 {
@@ -17,65 +11,108 @@ namespace FuzzyXmlReader
 
     class Program
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         static int Main(string[] args)
         {
-            string stringsfie = ";meta[language=en]\n; id      |key(hex)|key(str)| text\n";
+            #region Info
+            string stringsfile = ";meta[language=en]\n; id      |key(hex)|key(str)| text\n";
             string ResourceDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
-            File.WriteAllText(Path.Combine(ResourceDir, "locale.en.csv"), stringsfie);
+            File.WriteAllText(Path.Combine(ResourceDir, "locale.en.csv"), stringsfile);
+            DirectoryInfo indir = new DirectoryInfo(@"D:\\Xoreos Decoder v1\\dlg_export\\");
+            var files = indir.GetFiles("*.xml", SearchOption.TopDirectoryOnly);
+            var log = new List<string>();
 
-            
-            string[] Files = new string[]
+            //int customexportlength = 100;
+            int customexportlength = files.Length;
+            #endregion
+
+            #region Exporting
+            Console.WriteLine($"Processing {customexportlength} out of {files.Length} Files.");
+            for (int i = 0; i < files.Length; i++)
             {
-                //Path.Combine(ResourceDir, "cs0_06.xml"),
-                //Path.Combine(ResourceDir, "cs0_02b.xml"),
-                Path.Combine(ResourceDir, "q1005_kalkstein.xml"),
-            };
-            
+                //custom export length
+                if (i > customexportlength)
+                    break;
 
-            //string[] Files = Directory.GetFiles("D:\\Xoreos Decoder v1\\dlg_export\\");
+                string path = files[i].FullName;
 
+                try
+                {
+                    Xml2Yml(path);
+                }
+                catch (Exception ex)
+                {
+                    string logmessage = $"{path};{ ex.Message}";
+                    log.Add(logmessage);
+                    Console.WriteLine($"{i}/{files.Length}    {logmessage}");
+                }
 
+            }
+            #endregion
 
-            foreach (var file in Files)
+            #region Logging
+            if (log.Count > 0)
             {
-                Console.WriteLine(file.ToString());
-                DumpFile(file);
+                string logfilePath = Path.Combine(indir.Parent.FullName, "log.txt");
+
+                using (StreamWriter sw = new StreamWriter(logfilePath))
+                {
+                    sw.WriteLine($"Exported {(customexportlength - log.Count)} out of {customexportlength} Files succesfully.");
+                    sw.WriteLine($"Skipped {log.Count} Files.");
+                    sw.WriteLine($"------------------------------------------------");
+
+                    foreach (string s in log)
+                    {
+                        sw.WriteLine(s);
+                    }
+                }
             }
             
 
+            Console.WriteLine($"Exported {(customexportlength - log.Count)} out of {customexportlength} Files succesfully.");
+            Console.WriteLine($"Skipped {log.Count} Files.");
+            #endregion
 
-            
 
             return 1;
         }
 
-        private static void DumpFile(string infile)
+        /// <summary>
+        /// Exports a xoreos xml (export) to yml.
+        /// </summary>
+        /// <param name="infile"></param>
+        private static void Xml2Yml(string infile)
         {
             #region Save Settings
             var filename = Path.GetFileNameWithoutExtension(infile);
             var fileDirectory = Path.GetDirectoryName(infile);
-            var newDirectory = Path.Combine(fileDirectory, $"out/{filename}");
+            //var newDirectory = Path.Combine(fileDirectory, $"out/{filename}");
             var ymlDirectory = Path.Combine(fileDirectory, $"out");
 
-            if (!Directory.Exists(newDirectory))
-                Directory.CreateDirectory(newDirectory);
+            if (!Directory.Exists(ymlDirectory))
+                Directory.CreateDirectory(ymlDirectory);
 
-            string outfile = Path.Combine(newDirectory, $"{filename}_out.xml");
-            string outfile_sections = Path.Combine(newDirectory, $"{filename}_sections.xml");
+            //string outfile = Path.Combine(newDirectory, $"{filename}_out.xml");
+            //string outfile_sections = Path.Combine(newDirectory, $"{filename}_sections.xml");
             string outfile_yml = Path.Combine(ymlDirectory, $"{filename}.yml");
 
             #endregion 
 
-            var parsedClass = gff3Reader.Read(infile);
+            gff3struct parsedClass = gff3Reader.Read(infile);
 
-            XDocument xml = gff3Writer.GenerateXML(parsedClass);
-            XDocument xml_sections = gff3Writer.GenerateSectionsXML(xml);
 
-            //debug
-            //xml.Save(outfile);
-            //xml_sections.Save(outfile_sections);
+            var gffWriter = new gff3Writer(parsedClass, infile);
+            gffWriter.GenerateXML();
+            //gffWriter.XDOC.Save(outfile); //dbg
 
-            ymlWriter.Write(outfile_yml, xml_sections);
+            gffWriter.GenerateSectionsXML();
+            //gffWriter.XDOC_SECTIONS.Save(outfile_sections); //dbg
+
+            ymlWriter.Write(outfile_yml, gffWriter.XDOC_SECTIONS);
         }
     }
 }

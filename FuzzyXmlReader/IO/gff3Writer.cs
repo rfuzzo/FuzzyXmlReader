@@ -20,47 +20,31 @@ namespace FuzzyXmlReader.IO
 
     class gff3Writer
     {
-        public gff3Writer()
+        
+        public XDocument XDOC { get; set; }
+        public XDocument XDOC_SECTIONS { get; set; }
+        public string Name { get; set; }
+
+
+        private readonly gff3struct GFF;
+        private List<int> EntryChoices = new List<int>();
+        private List<int> ReplyChoices = new List<int>();
+        private List<string> HACK_Allrefs = new List<string>(); //HACK //FIXME
+
+        public gff3Writer( gff3struct gff, string name)
         {
-            
+            GFF = gff;
+            Name = name;
         }
 
-
-        /// <summary>
-        /// Serialize a gff3struct to xml.
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="gff3"></param>
-        public static void Write(string path, gff3struct gff3)
-        {
-            string Path = path;
-            gff3struct Gff3 = gff3;
-
-            
-            XmlWriterSettings settings = new XmlWriterSettings
-            {
-                Indent = true,
-            };
-            XmlSerializer ser = new XmlSerializer(typeof(gff3struct));
-            using (XmlWriter writer = XmlTextWriter.Create(path,settings))
-            {
-                ser.Serialize(writer, gff3, new XmlSerializerNamespaces());
-                //XDocument doc = XDocument.Parse(writer);
-            }
-                
-
-        }
-
-
-        #region XML
+        #region Public Methods
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gff3"></param>
         /// <returns></returns>
-        public static XDocument GenerateXML(gff3struct gff3)
+        public void GenerateXML()
         {
-            gff3struct Gff3 = gff3;
 
             #region XML Structure
             var Doc = new XDocument();
@@ -75,19 +59,19 @@ namespace FuzzyXmlReader.IO
             Settings.Add(new XElement("Player"));
             Settings.Add(new XElement("SectionsList"));
             #endregion
-            
+
 
             // Speaker settings
-            List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)gff3.GetGenericObjectByName("SpeakerList"))?.Value;
-            List<string> Actors = SpeakerList.Select(x => x.GetCommonObjectByName("Speaker")?.Value.ToString() )?.ToList();
+            List<gff3struct> SpeakerList = ((CGff3ListObject<gff3struct>)GFF.GetGenericObjectByName("SpeakerList"))?.Value;
+            List<string> Actors = SpeakerList.Select(x => x.GetCommonObjectByName("Speaker")?.Value.ToString())?.ToList();
             foreach (var actor in Actors)
                 Settings.Element("Actors").Add(new XElement("Actor", actor));
 
             //Dialogscripts
-            CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)gff3.GetGenericObjectByName("StartingList");
+            CGff3ListObject<gff3struct> StartingList = (CGff3ListObject<gff3struct>)GFF.GetGenericObjectByName("StartingList");
             for (int i = 0; i < StartingList.Value.Count; i++)
             {
-                
+
                 //add generic start sections to section list
                 // FIXME pause?
                 var startelement = new XElement("PAUSE",
@@ -104,9 +88,9 @@ namespace FuzzyXmlReader.IO
                 int idx = int.Parse(obj.Value.ToString());
 
                 // Write Tree
-                WriteTree(gff3, startelement, idx, "entry", true);
+                WriteTree(GFF, startelement, idx, "entry", true);
 
-                
+
             }
 
             //Modify Speaker Section
@@ -115,8 +99,137 @@ namespace FuzzyXmlReader.IO
             if (String.IsNullOrEmpty(player))
                 Settings.Element("Player").Value = actors.First();
 
-            return Doc;
+
+            XDOC = Doc;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_indoc"></param>
+        /// <returns></returns>
+        public void GenerateSectionsXML()
+        {
+            #region XML Structure
+            var Doc = new XDocument();
+            var root = new XElement("root");
+            Doc.AddFirst(root);
+            Doc.Root.Add(XDOC.Descendants("Settings").First(),
+                new XElement("Dialogscripts"));
+            XElement Settings = Doc.Descendants("Settings").First();
+            XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
+            #endregion
+
+            List<XElement> dbgout = new List<XElement>();
+
+            List<XElement> sections = XDOC.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
+            List<XElement> sectionNodes = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
+
+            List<XElement> xSections = Settings.Element("SectionsList").Elements().ToList();
+            List<string> SectionRefs = xSections.Select(x => x.Value.ToString()).ToList();
+
+            //HACK
+            List<XElement> _lookups = new List<XElement>();
+            _lookups.AddRange(sectionNodes.SelectMany(_ => _.Descendants().Where(x => x.Attribute("CHOICE") != null)).Distinct());
+            _lookups = _lookups.Select(_ => new XElement(_)).ToList();
+            //HACK
+
+            // loop through all start section nodes
+            foreach (var item in sectionNodes)
+            {
+                string sectionName = item.Attribute("section").Value;
+
+                //check if any of the descendents have a reference to another section
+                var refnode = item.Descendants().Where(x => SectionRefs.Contains(x.Attribute("ref")?.Value)).ToList();
+                foreach (var n in refnode)
+                {
+                    string refID = n.Attribute("ref").Value;
+                    string refName = xSections.Find(x => x.Value == refID).Attribute("Name").Value;
+                    string text = n.Attribute("Text")?.Value;
+
+                    LabelXRefs(refName, text, n.Parent);
+                    n.Remove();
+                }
+
+                //if it is a section but has no descendents that point to any other section
+                //it could either be an end, then add EXIT
+                //or a circular reference 
+                if (refnode.Count == 0)
+                {
+                    if (item.Attribute("END")?.Value != null)
+                    {
+                        item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                    }
+                    else
+                    {
+                        // item contains just a reference
+                        if (item.Descendants().Count() == 0)
+                        {
+                            //look up choices of already existing file
+                            string refID = item.Attribute("ref").Value;
+                            var parent = _lookups.FirstOrDefault(x => x.Attribute("ref").Value == refID);
+                            foreach (var el in parent.Elements())
+                            {
+                                string id = el.Attribute("ref").Value;
+                                string refName = xSections.Find(x => x.Value == id).Attribute("Name").Value;
+                                string text = el.Attribute("Text")?.Value;
+
+                                LabelXRefs(refName, text, item);
+                            }
+                        }
+                        //somewhere in the children there is a reference
+                        else
+                        {
+                            var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
+                            last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
+                        }
+                    }
+                }
+
+
+                dbgout.Add(new XElement("section", new XAttribute("Name", sectionName), item));
+                Dialogscripts.Add(new XElement("section", new XAttribute("Name", sectionName), item));
+            }
+
+            //add exit section
+            Dialogscripts.Add(new XElement("section",
+                new XAttribute("Name", "section_exit"),
+                new XElement("EXIT")));
+
+
+            XDOC_SECTIONS = Doc;
+        }
+
+
+        /// <summary>
+        /// Serialize a gff3struct to xml.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="gff3"></param>
+        public void Write(string path)
+        {
+            string Path = path;
+            
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true,
+            };
+            XmlSerializer ser = new XmlSerializer(typeof(gff3struct));
+            using (XmlWriter writer = XmlTextWriter.Create(path,settings))
+            {
+                ser.Serialize(writer, GFF, new XmlSerializerNamespaces());
+                //XDocument doc = XDocument.Parse(writer);
+            }
+                
+
+        }
+
+
+        #endregion
+
+        #region XML
+        
 
         /// <summary>
         /// Recursive writing dialogue tree.
@@ -124,15 +237,25 @@ namespace FuzzyXmlReader.IO
         /// <param name="gff3"></param>
         /// <param name="idx"></param>
         /// <param name="type"></param>
-        private static void WriteTree(gff3struct gff3, XElement printparent, int idx, string type, bool isSection)
+        private void WriteTree(gff3struct gff3, XElement printparent, int idx, string type, bool isSection)
         {
+            //HACK //FIXME loop detection
+            string HACK_ref = $"{type}_{idx}";
+            if (!HACK_Allrefs.Contains(HACK_ref))
+            {
+                HACK_Allrefs.Add(HACK_ref);
+            }
+            else
+            {
+                throw new Gff3Exception("Looping");
+            }
+
             XElement output = new XElement(type);
             if (type == "entry")
             {
                 gff3struct entry = gff3.GetEntryByIndex(idx);
 
                 //PRINT DATA
-                
                 bool isquest = AnnotateXML(entry, printparent, idx, type, isSection, ref output);
 
                 //get replies
@@ -150,7 +273,15 @@ namespace FuzzyXmlReader.IO
                 {
                     output.Add(new XAttribute("CHOICE", "true"));
                 }
-                    
+
+                //handle circular references
+                if (EntryChoices.Contains(idx))
+                    return;
+
+                if (replies.Value.Count > 1)
+                    EntryChoices.Add(idx);
+
+
                 foreach (gff3struct reply in replies.Value)
                 {
                     int newidx = int.Parse(reply.GetCommonObjectByName("Index").Value.ToString());
@@ -183,9 +314,8 @@ namespace FuzzyXmlReader.IO
                 }
                 else
                 {
-                    throw new NotImplementedException();
+                    throw new Gff3Exception("More than one Entry in a Reply");
                 }
-               
             }
         }
 
@@ -197,7 +327,7 @@ namespace FuzzyXmlReader.IO
         /// <param name="idx"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static bool AnnotateXML(gff3struct data, XElement parent, int idx, string type, bool isSection, ref XElement output)
+        private bool AnnotateXML(gff3struct data, XElement parent, int idx, string type, bool isSection, ref XElement output)
         {
             //Document Settings
             var Doc = parent.Document;
@@ -227,7 +357,7 @@ namespace FuzzyXmlReader.IO
                 Speaker = "npc";
             //write speakers to settings
             if (Actors == null)
-                throw new NotImplementedException(); //should never go offbut keep it for testing
+                throw new Gff3Exception("No Actors in Database"); //should never go offbut keep it for testing
             List<string> ActorList = Actors.Elements().Select(x => x.Value.ToString()).ToList();
             //Add actors to actorlist
             if (!ActorList.Contains(Speaker))
@@ -251,7 +381,6 @@ namespace FuzzyXmlReader.IO
             //add section data
             if (isSection)
             {
-               
                 //remove special charactersand to lower
                 string sectionname = Text.Split(' ').First();
                 Regex rgx = new Regex("[^a-zA-Z0-9]");
@@ -303,7 +432,7 @@ namespace FuzzyXmlReader.IO
         /// <param name="doc"></param>
         /// <param name="name"></param>
         /// <param name="id"></param>
-        private static void AddToSectionsNoDuplicates(XDocument doc, string name, string id)
+        private void AddToSectionsNoDuplicates(XDocument doc, string name, string id)
         {
             XElement SectionsList = doc.Descendants("Settings").First()?.Element("SectionsList");
 
@@ -319,7 +448,7 @@ namespace FuzzyXmlReader.IO
         /// <param name="data"></param>
         /// <param name="idx"></param>
         /// <returns></returns>
-        private static SDialogscriptdata AttributeData(gff3struct data, ref List<XAttribute> ret)
+        private SDialogscriptdata AttributeData(gff3struct data, ref List<XAttribute> ret)
         {
             var sdata = new SDialogscriptdata();
 
@@ -351,104 +480,37 @@ namespace FuzzyXmlReader.IO
         #endregion
 
         #region SectionsXML
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="_indoc"></param>
-        /// <returns></returns>
-        public static XDocument GenerateSectionsXML(XDocument _indoc)
+        
+
+        private  void LabelXRefs(string refName, string text, XElement el)
         {
-            #region XML Structure
-            var Doc = new XDocument();
-            var root = new XElement("root");
-            Doc.AddFirst(root);
-            Doc.Root.Add(_indoc.Descendants("Settings").First(),
-                new XElement("Dialogscripts"));
-            XElement Settings = Doc.Descendants("Settings").First();
-            XElement Dialogscripts = Doc.Descendants("Dialogscripts").First();
-            #endregion
-
-
-
-            List<XElement> sections = _indoc.Descendants().Where(x => x.Attribute("section") != null).ToList(); //get all sections
-            List<XElement> list = sections.Distinct(new XNodeEqualityComparer()).ToList().Select(x => XElement.Parse(x.ToString())).ToList(); //make distinct
-
-            List<XElement> xSections = Settings.Element("SectionsList").Elements().ToList();
-            List<string> SectionRefs = xSections.Select(x => x.Value.ToString()).ToList();
-            
-
-
-
-            // loop through all start section nodes
-            foreach (var item in list)
+            //if was choice
+            if (el.Attribute("CHOICE") != null)
             {
-                string sectionName = item.Attribute("section").Value;
-
-                //check if any of the descendents have a reference to another section
-                var refnode = item.Descendants().Where(x => SectionRefs.Contains(x.Attribute("ref")?.Value)).ToList();
-                foreach (var n in refnode)
+                // if there is already a choice node
+                if (el.Element("CHOICE") != null)
                 {
-                    string refID = n.Attribute("ref").Value;
-                    string refName = xSections.Find(x => x.Value == refID).Attribute("Name").Value;
-                    string Text = n.Attribute("Text")?.Value;
-
-                    //if was choice
-                    if (n.Parent.Attribute("CHOICE") != null)
-                    {
-                        // if there is already a choice node
-                        if (n.Parent.Element("CHOICE") != null)
-                        {
-                            n.Parent.Element("CHOICE")?.Add(new XElement("CREF",
-                                new XAttribute("NEXT", refName),
-                                new XAttribute("Text", Text)
-                                ));
-                        }
-                        //otherwise add a choice node
-                        else
-                            n.Parent.Add(new XElement("CHOICE",
-                                new XElement("CREF",
-                                new XAttribute("NEXT", refName),
-                                new XAttribute("Text", Text)
-                                )));
-                    }
-                    // no choice but found a reference
-                    else
-                    {
-                        n.Parent.Add(new XElement("REF",
-                            new XAttribute("NEXT", refName)
-                            //new XAttribute("Text", Text)
-                            ));
-                    }
-                    n.Remove();
+                    el.Element("CHOICE")?.Add(new XElement("CREF",
+                        new XAttribute("NEXT", refName),
+                        new XAttribute("Text", text)
+                        ));
                 }
-
-                //if it is a section but has no descendents that point to any other section
-                //add EXIT
-                if (refnode.Count == 0)
-                {
-                    if (item.Attribute("END")?.Value != null)
-                    {
-                        item.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
-                    }
-                    else
-                    {
-                        var last = item.Descendants().Where(x => x.Attribute("END") != null).First();
-                        last.Add(new XElement("REF", new XAttribute("NEXT", "section_exit")));
-                    }
-                }
-
-
-
-                Dialogscripts.Add(new XElement("section", new XAttribute("Name", sectionName), item));
+                //otherwise add a choice node
+                else
+                    el.Add(new XElement("CHOICE",
+                        new XElement("CREF",
+                        new XAttribute("NEXT", refName),
+                        new XAttribute("Text", text)
+                        )));
             }
-
-            //add exit section
-            Dialogscripts.Add(new XElement("section", 
-                new XAttribute("Name", "section_exit"),
-                new XElement("EXIT")));
-
-
-            return Doc;
+            // no choice but found a reference
+            else
+            {
+                el.Add(new XElement("REF",
+                    new XAttribute("NEXT", refName)
+                    //new XAttribute("Text", text)
+                    ));
+            }
         }
         #endregion
     }
